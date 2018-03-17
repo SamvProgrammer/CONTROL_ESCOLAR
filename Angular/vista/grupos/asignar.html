@@ -1,0 +1,79 @@
+<div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{gpo.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+	<div id="informacion" role="alert">
+          <h4>Asignación de Grupos</h4>
+         
+     </div>
+     
+<br>
+        <div class="row">
+          <div class="col-md-4" ></div>
+          <div class="col-md-4">
+            <label>1.- Elija el grado del 1-6 </label><br>
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Grados</span>
+
+           <select class="form-control" ng-model="gpo.grado" ng-change="gpo.getGruposNoOcupados()">
+                <option ng-repeat="gdos in gpo.grados" value="{{gdos.grado}}">{{gdos.grado}}</option>
+           </select>
+
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4" ></div>
+        </div>
+
+    	<div class="row">
+       <div class="col-md-4" ></div>
+       <div class="col-md-4">
+        <label>2.- Elija el grupo, los que aparezcan son los que existen de acuerdo al grado </label><br>
+        
+        <div class=" form-group">
+          <div class="input-group">
+            <span class="input-group-addon">Grupo</span>
+            <select class="form-control" ng-model="gpo.grupo_selected">
+                <option ng-repeat="grupos in gpo.grupoNoOcupado" value="{{grupos.idGrupo}}" >{{grupos.nombre}}</option>
+           </select>
+                  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ></div>
+ 
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4" ></div>
+        <div class="col-md-4">
+          <label>3.- Seleccione al docente que que estara a cargo del grupo </label>
+        <div class=" form-group">
+          <div class="input-group">
+            <span class="input-group-addon">Docentes</span>
+            <select class="form-control" ng-model="gpo.docente_selected" ng-change="gpo.verSeleccionado()">
+                <option ng-repeat="docentes in gpo.datos_docentes_activos" value="{{docentes.idDocente}}" >{{docentes.nombre_completo}}</option>
+           </select>
+                  
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" ></div>
+      </div>
+
+      <div>
+      	<button class="btn btn-success" ng-click="gpo.saveDocenteGrupo()">Asignar</button>
+      </div>
+
+	
+</div>

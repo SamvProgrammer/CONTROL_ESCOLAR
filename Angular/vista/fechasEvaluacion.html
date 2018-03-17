@@ -1,0 +1,59 @@
+<div id="containerA">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{fe.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+  <div>
+    <h2>Fechas de Evaluación</h2>
+    <h4 id="negro">En esta sección se manipularán las fechas en las que los docentes tendrán permitido subir calificaciones bimestrales, por defecto se indican ya las fechas tentativas, para poder visualizarlas siga los siguientes pasos: </h4>
+    
+    <div class="row">
+        
+    <div style="text-align: left;margin-left: 400px;">
+    
+      <label>1.-Despliegue la sección de Bimestre para seleccionar de los 5 bimestres establecidos</label><br>
+      <label>2.-Seleccione aquel bimestre del que desee ver las fechas de evaluación establecidas</label><br>
+      <label>3.-Automaticamente se carga la "Fecha inicio Evaluación" y la "Fecha Fin Evaluación"</label><br>
+      <label>4.-Modifique las fechas inicio y fin como desee y después de clic en "Aceptar"</label>
+      
+    
+  </div>
+  
+  
+      
+    </div>
+  <div id="informacion" role="alert">
+      <h4>Información general</h4>
+  </div><br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <span class="input-group-addon"><strong>Bimestre</strong></span>
+      <select class="form-control" ng-model="fe.bim" ng-change="fe.getFechasEvalBimestre(fe.bim)">
+                <option ng-repeat="bimes in fe.bimestres" value="{{bimes.idBimestre}}">{{bimes.nombre}}</option>
+           </select><br>
+        <label>Fecha Inicio Evaluación:</label><br>
+        <input  type="date"  ng-model="fe.fechaInicioG" ><br> 
+    
+        <label>Fecha Fin Evaluación:</label><br>
+        <input  type="date"  ng-model="fe.fechaFinG">
+    </div>
+    <div class="col-md-4"></div>
+  </div><br>
+
+  <center>
+    <button ng-click="fe.updateFechaEvalBim()" id="Agregar" class="btn btn-info">Agregar</button>
+    <button ng-click="" id="Cancelar" class="btn btn-info">Cancelar</button>
+  </center>
+  
+</div>
+  </center>
+  
+</div>

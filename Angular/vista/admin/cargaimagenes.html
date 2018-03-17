@@ -1,0 +1,64 @@
+<div id="containerA">
+	<div>
+		<h2>Actualizar Logos</h2>
+
+	</div>
+    
+	<div>
+		
+	Presiona el boton para tener acceso a tus archivos y puedas seleccionar tu imagen
+<form name="form">
+  
+    <button ngf-select ng-model="cam.file" 
+    		name="file" ngf-pattern="'image/*'"
+    		ngf-accept="'image/*'" ngf-max-size="20MB" 
+    		ngf-min-height="50"
+
+    		class="btn btn-info"
+    		ngf-resize="{width: 1000, height: 1000, centerCrop: true}"
+            ngf-resize-if="$width > 5000 || $height > 5000"
+            >Selecciona el nuevo logo
+
+    		</button>
+    		<br>
+    		<br>
+  
+
+
+  <button type="submit" ng-click="cam.submit()" id="Agregar" class="btn btn-info">Aceptar</button>
+</form>
+
+	</div>
+
+
+
+<div>
+        
+    Presiona el boton para tener acceso a tus archivos y puedas seleccionar tu imagen
+<form  name="form">
+  
+    <button ngf-select ng-model="cam.file2" 
+            name="file2" ngf-pattern="'image/*'"
+            ngf-accept="'image/*'" ngf-max-size="20MB" 
+            ngf-min-height="50"
+
+            class="btn btn-info"
+            ngf-resize="{width: 1000, height: 1000, centerCrop: true}"
+            ngf-resize-if="$width > 5000 || $height > 5000"
+            >Selecciona el nuevo logo
+
+            </button>
+            <br>
+            <br>
+  
+
+
+  <button type="submit" ng-click="cam.submit2()" id="Agregar" class="btn btn-info">Aceptar</button>
+</form>
+
+    </div>
+
+
+
+
+</div>

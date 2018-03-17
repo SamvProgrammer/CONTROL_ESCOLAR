@@ -1,0 +1,56 @@
+<div id="containerA">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{mc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+    <div class="col-md-10">
+            <flash-message>
+            </flash-message>
+    </div>
+
+    <div>
+        <h2>Datos de la Materia</h2>
+    </div>
+    
+    <div id="informacion" role="alert">
+        <h4>Información general</h4>
+    </div>
+       <!-- <div class="alert alert-danger col-md-6 col-md-offset-3" ng-if="pc.oculta">
+            <li ng-repeat="err in pc.advertencia">
+              <strong>ERROR!</strong> {{err[0]}}
+            </li>
+        </div>-->
+
+    <div class="row">
+        <div class="col-md-4"></div>
+    
+    
+        <div class="col-md-4">
+        <label id>Nombre</label><br>
+        <input type="text" ng-model="mc.objMateria.nombre" ng-keypress="mc.valida($event,4)" onkeyup="javascript:this.value=this.value.toUpperCase();" required><br>
+        <label>Grado</label><br>
+        <select ng-model="mc.objMateria.grado" style="width:80px;" ng-blur="mc.materiaExistente()" required>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+        </select><br>
+        <label>N° de horas Semanales</label><br>
+            <input type="text" maxlength="1" ng-model="mc.objMateria.horas" style="width:80px;" ng-keypress="mc.valida($event,5)" required>
+        
+        </div>
+  
+        <div class="col-md-4"></div>
+    </div><br>
+    <center><button ng-click="mc.agregarMateria(mc.objMateria)" id="Agregar" class="btn btn-info">Agregar</button>
+    <button  ng-click="mc.limpiainputs()" id="Cancelar" class="btn btn-info">Cancelar</button></center>
+</div>

@@ -1,0 +1,32 @@
+
+<link rel="stylesheet" href="css/estilos-eliminarDocente.css" type="text/css">
+
+<h3 id="titulo-baja">Dar de Baja Docente</h3>
+
+<div class="form-group has-success has-feedback" id="eliminar">
+	
+	<label><center>Nombre Docente</label>
+	<input type="text"  ng-model="nombre" class="form-control">
+     
+        
+
+</div>
+
+<div id="oculto" style="visibility: hidden" >
+
+
+	<h3>Docente Elimidado</h3>
+
+</div>
+
+<script >
+  
+  var ocultar= function(){
+    document.getElementById("oculto").style.visibility='visible';
+  };
+
+
+</script>
+
+
+<button ng-click="pc.eliminarDocente(nombre)" id="btn-eliminar" class="btn btn-warning" onclick="ocultar()"; ><h5>Eliminar</h5></button>

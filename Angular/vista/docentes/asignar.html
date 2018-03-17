@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="tbcAngular">
+<head>
+  <link rel="stylesheet" href="css/estilos-asignarDocente.css" type="text/css">
+</head>
+
+<body>
+
+
+
+
+<div id="tabla-docente" ng-controller="DocenteCtrl">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th width="15%">Nombres
+          <th width="15%">Apellido Paterno
+          <th width="15%">Apellido Materno
+          <th width="15%">Grado
+          <th width="15%">Grupo
+          
+        </tr>
+      </thead>
+      <tbody ng-repeat="docentes in pc.datos_docentes">
+      <tr class="form-inline">
+        <td>
+          <span>{{docentes.nombres}}</span>
+        </td>
+        <td>
+          <span>{{docentes.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{docentes.apMaterno}}</span>
+        </td>
+         <td>
+          <span>{{docentes.grado}}</span>
+        </td>
+        <td>
+          <span>{{docentes.grupo}}</span>
+        </td>
+      </tr>
+
+
+    </tbody>
+    </table>
+    
+    
+   </div>
+
+
+</body>
+</html>

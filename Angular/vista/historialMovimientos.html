@@ -1,0 +1,369 @@
+<div id="containerA">
+    <div class="row">
+        <h4 align="center"><strong>VISTA HISTORIAL USUARIO</strong></h4>
+    </div>
+   
+    <div class="row">
+        <table class="table table-striped">
+            <h2 class="text-center">HISTORIAL</h2>
+            <thead>
+                <tr>
+                    <th width="8%">TIPO USUARIO
+                        <th width="20%" >NOMBRE USUARIO
+                            <th width="8%" >DATOS USUARIO
+                                <th width="8%" >ACCION
+                                    <th width="8%" >TIPO OBJETIVO
+                                        <th width="20%" >NOMBRE OBJETIVO
+                                            <th width="8%">DATOS OBJETIVO
+                                                <th width="10%">CAMPO CAMBIADO
+                                                    <th width="5%">VALOR ANTERIOR
+                                                        <th width="5%" >VALOR NUEVO
+                                                            <th width="8%">FECHA DE ACCION
+                </tr>
+            </thead>
+            <tbody ng-repeat="historial in hs.historial_usuario">
+                <tr class="form-inline">
+                    <td><span ng-bind="historial.tipo_usuario"></span></td>
+                    <td><span ng-bind="historial.nombre_usuario"></span></td>
+                    <td ng-if="historial.tipo_usuario == 'ADMINISTRADOR'">
+                        <span>ERES TU</span>
+                    </td>
+                    <td ng-if="historial.tipo_usuario == 'DIRECTOR'">
+                        <a class="btn btn-primary" arial-label="Mas.." data-toggle="modal" data-target="#myModalVerDocente" ng-click="hs.getDocenteById(historial.id_usuario)">
+                        <i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td>
+                    
+                    <td ng-if="historial.tipo_usuario == 'DOCENTE'">
+                        <a class="btn btn-primary" arial-label="Mas.." data-toggle="modal" data-target="#myModalVerDocente" ng-click="hs.getDocenteById(historial.id_usuario)">
+              			<i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td>
+                    <td ng-if="historial.tipo_usuario == 'ALUMNO'">
+                        <a class="btn btn-primary" arial-label="Mas.." data-toggle="modal" data-target="#myModalVerAlumno" ng-click="hs.getAlumnoById(historial.id_usuario)">
+              			<i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td>
+                    <td><span ng-bind="historial.accion"></span></td>
+                    <td><span ng-bind="historial.tipo_objetivo"></span></td>
+                    <td><span ng-bind="historial.nombre_objetivo"></span></td>
+                    
+                    <td ng-if="historial.tipo_objetivo == 'DOCENTE'">
+                        <a class="btn btn-primary" arial-label="Mas.." data-toggle="modal" data-target="#myModalVerDocente" ng-click="hs.getDocenteById(historial.id_objetivo)">
+              			<i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td>
+                    <td ng-if="historial.tipo_objetivo === 'ALUMNO'">
+                        <a class="btn btn-primary" arial-label="Mas.." data-toggle="modal" data-target="#myModalVerAlumno" ng-click="hs.getAlumnoById(historial.id_objetivo)">
+              			<i class="fa fa-eye" aria-hidden="true"></i></a>
+                    </td>
+                    <td><span ng-bind="historial.campos_cambiados"></span></td>
+                    <td><span ng-bind="historial.valores_antiguos"></span></td>
+                    <td><span ng-bind="historial.valores_nuevos"></span></td>
+                    <td><span ng-bind="historial.fecha"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+<!--******Modal ver Alumno*******-->
+<div class="modal" id="myModalVerAlumno">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <!-- more usage of angular data binding -->
+                <strong>NOMBRE:</strong>
+                <span ng-bind="hs.alumno.nombres"></span> 
+                <strong>GRUPO:</strong>
+                <span ng-bind="hs.alumno.nombre_grupo"></span>
+               
+                
+            </div>
+
+            <div class="modal-body">
+                <div class="row top-buffer">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="15%">
+                                        <th width="20%">
+                                            <th width="15%">
+                                                <th width="20%">
+                                                    <th width="15%">
+                                                        <th width="20%">
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>NOMBRE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.nombres"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>APELLIDO PATERNO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.apPaterno"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>APELLIDO MATERNO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.apMaterno"></span>
+                                    </td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>CURP</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.curp"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>EDAD</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.edad"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>SEXO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.sexo"></span>
+                                    </td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <br>
+                                        <br>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>COLONIA</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.colonia"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>CALLE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.calle"></span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="form-inline">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>TIPO SANGRE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.tipoSangre"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>ALERGIAS</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.alergias"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>NOMBRE TUTOR</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.nombreTutor"></span>
+                                    </td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>NÚMERO TELÉFONO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.numTel"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>EMAIL</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.alumno.email"></span>
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div class="col-xs-12 top-buffer">
+                            <a class="btn btn-danger pull-right" aria-label="Cancel" data-dismiss="modal">
+                           <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                           </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--******Modal ver Docente*******-->
+<div class="modal" id="myModalVerDocente">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <!-- more usage of angular data binding -->
+                <strong>NOMBRE:</strong>
+                <span ng-bind="hs.docente.nombres"></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+            <div class="modal-body">
+                <div class="row top-buffer">
+                    <div class="col-md-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="15%">
+                                        <th width="20%">
+                                            <th width="15%">
+                                                <th width="20%">
+                                                    <th width="15%">
+                                                        <th width="20%">
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>NOMBRE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.nombres"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>APELLIDO PATERNO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.apPaterno"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>APELLIDO MATERNO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.apMaterno"></span>
+                                    </td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>RFC</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.rfc"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>TIPO SANGRE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.tipoSangre"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>ALERGIAS</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.alergias"></span>
+                                    </td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <br>
+                                        <br>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>COLONIA</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.colonia"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>CALLE</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.calle"></span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="form-inline">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="form-inline">
+                                    <td>
+                                        <span><strong>NÚMERO TELÉFONO</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.numTel"></span>
+                                    </td>
+                                    <td>
+                                        <span><strong>EMAIL</strong></span>
+                                    </td>
+                                    <td>
+                                        <span ng-bind="hs.docente.email"></span>
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div class="col-xs-12 top-buffer">
+                            <a class="btn btn-danger pull-right" aria-label="Cancel" data-dismiss="modal">
+                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

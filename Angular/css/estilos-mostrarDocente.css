@@ -1,0 +1,80 @@
+
+
+#btn-eliminar{
+	
+	height: 40px;
+	width: 90px;
+	color: black;
+	font-size: 14px
+}
+#btn-modificar{
+	
+	height: 40px;
+	width: 90px;
+	color: black;
+	font-size: 14px
+}
+#modal-cancelar{
+	
+	height: 40px;
+	width: 100px;
+	color: white;
+	font-size: 18px;
+	text-align: left;
+	
+}
+#modal-guardar{
+	
+	height: 40px;
+	width: 100px;
+	color: white;
+	font-size: 18px;
+	text-align: left;
+	
+}
+#btn-modificar{
+	
+	height: 40px;
+	width: 90px;
+	color: black;
+	font-size: 14px
+}
+#tabla-docente{
+	font-size: 14px;
+	border-spacing: 2px;
+	border-collapse: separate;
+	text-align: center;
+}
+#containerA{
+	background-color: white;
+	text-align: center;
+	height: 1500px;
+	width: 100%;
+}
+#containerAb{
+	background-color: white;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+}
+#containerB{
+	background-color: white;
+	text-align: center;
+}
+#listadocentes{
+	color: #1f618d;
+	text-align: center;
+}
+table{
+	table-layout: auto;
+}
+th{
+	text-align: center;
+	font-size: 14px;
+
+}
+td{
+	text-align: center;
+	font-size: 14px;
+
+}

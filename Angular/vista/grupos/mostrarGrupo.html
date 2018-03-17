@@ -1,0 +1,314 @@
+<div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{gc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+    <div>
+        <h2>Lista de Grupos</h2>
+    </div>
+
+<div class="table-responsive">
+
+  <div class="col-xs-4" >
+          <label>Buscar por:</label>
+      <select class="form-control" ng-model="gc.parametro" placeholder="elige tu búsqueda" ng-change="gc.getGruposBusqueda(gc.parametro)">
+        <option value="grado">Grado</option>
+        <option value="grupo">Grupo</option>
+        <option value="vacio">Vacios</option>
+      </select>
+      <br>
+      
+    </div>
+    <div class="col-xs-4" ng-if="gc.gra">
+          <label>Grado</label>
+      <select class="form-control" ng-model="gc.valor" placeholder="elige tu búsqueda" ng-change="gc.getGradoBusqueda()">
+        <option ng-repeat="g in gc.gradosBusqueda">{{g.grado}}</option>
+      </select>
+      <br>
+      
+    </div>
+    <div class="col-xs-4" ng-if="gc.gru">
+          <label>Grupo</label>
+      <select class="form-control" ng-model="gc.valor" placeholder="elige tu búsqueda" ng-change="gc.getGrupoBusqueda()">
+        <option ng-repeat="g in gc.gruposBusqueda">{{g.nombre}}</option>
+      </select>
+      <br>
+      
+    </div>
+    
+<div class="col-md-4">
+  <label>Búsqueda general</label>
+          <div class=" form-group">
+            <div class="input-group">
+
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+
+            <input ng-model="gc.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar grupos">
+            </div>
+          </div>
+        </div>
+
+<div  id="tabla-alumno"><!--table table-striped-->
+      <table class="table table-striped" ng-if="gc.gra">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>Grado
+          <th>Grupo
+          <th>Total Alumnos
+          <th>Capacidad de grupo
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="(i,grupo) in gc.gradoB | filter:gc.q | itemsPerPage:gc.pageSize" current-page="gc.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{grupo.idGrupo}}</span>
+        </td>
+        <td>
+          <span>{{grupo.grado}}</span>
+        </td>
+        <td>
+          <span>{{grupo.nombre}}</span>
+        </td>
+        <td >
+          <span>{{grupo.totalAlumnos}}</span>
+        </td>
+        <td>
+          <span>{{grupo.maxAlumnos}}</span>
+        </td>
+        <td>
+         <a class="btn btn-success"
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="gc.getGrupoByTagName(grupo.idGrupo)" 
+                  title="Modifica los datos del grupo correspondiente a esta fila">
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>Modificar</a>
+
+         <a class="btn btn-danger" id="btn-eliminarA" 
+                  ng-click="gc.eliminarGrupo(grupo.idGrupo)"
+                  title="Elimina el grupo correspondiente a esta fila">
+               <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>Inactivar</a>
+
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <table class="table table-striped" ng-if="gc.gru">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>Grado
+          <th>Grupo
+          <th>Total Alumnos
+          <th>Capacidad de grupo
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="(i,grupo) in gc.grupoB | filter:gc.q | itemsPerPage:gc.pageSize" current-page="gc.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{grupo.idGrupo}}</span>
+        </td>
+        <td>
+          <span>{{grupo.grado}}</span>
+        </td>
+        <td>
+          <span>{{grupo.nombre}}</span>
+        </td>
+        <td >
+          <span>{{grupo.totalAlumnos}}</span>
+        </td>
+        <td>
+          <span>{{grupo.maxAlumnos}}</span>
+        </td>
+        <td>
+         <a class="btn btn-success"
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="gc.getGrupoByTagName(grupo.idGrupo)" 
+                  title="Modifica los datos del grupo correspondiente a esta fila">
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>Modificar</a>
+
+         <a class="btn btn-danger" id="btn-eliminarA" 
+                  ng-click="gc.eliminarGrupo(grupo.idGrupo)"
+                  title="Elimina el grupo correspondiente a esta fila">
+               <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>Inactivar</a>
+
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <table class="table table-striped" ng-if="gc.va">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>Grado
+          <th>Grupo
+          <th>Total Alumnos
+          <th>Capacidad de grupo
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="(i,grupo) in gc.gruposVacios | filter:gc.q | itemsPerPage:gc.pageSize" current-page="gc.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{grupo.idGrupo}}</span>
+        </td>
+        <td>
+          <span>{{grupo.grado}}</span>
+        </td>
+        <td>
+          <span>{{grupo.nombre}}</span>
+        </td>
+        <td >
+          <span>{{grupo.totalAlumnos}}</span>
+        </td>
+        <td>
+          <span>{{grupo.maxAlumnos}}</span>
+        </td>
+        <td>
+         <a class="btn btn-success"
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="gc.getGrupoByTagName(grupo.idGrupo)" 
+                  title="Modifica los datos del grupo correspondiente a esta fila">
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>Modificar</a>
+
+         <a class="btn btn-danger" id="btn-eliminarA" 
+                  ng-click="gc.eliminarGrupo(grupo.idGrupo)"
+                  title="Elimina el grupo correspondiente a esta fila">
+               <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>Inactivar</a>
+
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+    
+    
+   </div>
+
+<div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>NOMBRE: {{gc.objGrupo.grado}} "{{gc.objGrupo.nombre}}"</strong>
+          </div>
+          <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">
+                          <th width="20%">DATOS
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>GRADO</strong></span>
+                          </td>
+                          <td>
+                                    <select ng-model="gc.objGrupo.grado">
+                                    <option selected="true">{{gc.objGrupo.grado}}</option>   
+                                    <option>1</option>   
+                                    <option>2</option>   
+                                    <option>3</option>   
+                                    <option>4</option>   
+                                    <option>5</option>   
+                                    <option>6</option>   
+                                  </select>
+                          
+                    
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>GRUPO</strong></span>
+                          </td>
+                          <td>
+                            
+                            <select ng-model="gc.objGrupo.nombre" ng-change="gc.grupoExistente()">
+                                    <option>{{gc.objGrupo.nombre}}</option>   
+                                    <option>A</option>   
+                                    <option>B</option>   
+                                    <option>C</option>   
+                                      
+                            </select>
+                  <ui-select-choices repeat="group in gc.datos_grupos">
+                      <div ng-bind-html="group.nombre | highlight: $select.search"></div>
+                      <small>
+                                            
+                      </small>
+                  </ui-select-choices>
+                </ui-select>
+                          </td>
+                        </tr>
+                         <tr class="form-inline">
+                          <td>
+                            <span><strong>TOTAL ALUMNOS</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-keypress="gc.valida($event,2)" ng-model="gc.objGrupo.totalAlumnos" value="{{gc.objGrupo.totalAlumnos}}" disabled >
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>CAPACIDAD DE GRUPO</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-keypress="gc.valida($event,2)" ng-model="gc.objGrupo.maxAlumnos" value="{{gc.objGrupo.maxAlumnos}}" ng-blur="gc.validarMaxAlumnos(gc.objGrupo.maxAlumnos, gc.objGrupo.totalAlumnos)">
+                          </td>
+                        </tr>
+                      
+                       
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-md-12 top-buffer">
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+
+                       <a class="btn btn-success pull-left" 
+                       aria-label="Edit"
+                       ng-click="gc.updateGrupo(gc.objGrupo)"
+                       data-dismiss="modal" title="guardar" id="modal-guardar">
+                       <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div
+   
+
+
+
+
+ 

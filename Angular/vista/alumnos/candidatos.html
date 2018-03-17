@@ -1,0 +1,194 @@
+ <div id="containerA">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{can.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+ <form action="" id="myForm" name="myForm">
+  <div>
+    <h2>Calificaciones Parciales</h2>
+  </div>
+  
+
+
+      <div id="tabla-alumno"><!--table table-striped-->
+
+      <table class="table table-striped">
+      <thead>
+        <th>NOMBRE DEL ALUMNO</th>
+          <th ng-repeat="(i, materias) in can.prome[0].datosMateria.nombreMateria track by $index">
+          {{materias}}</th>
+        
+        </tr>
+      </thead>
+      <!--
+      model="CtrlGrupoAlumno.registro[i].bimestre1
+      -->
+       <tbody>
+        <tr class="form-inline" ng-repeat="(j, alumnos) in can.prome">
+        <td>{{alumnos.nombre_completo}}</td>
+        <td ng-repeat="(i, materias) in alumnos.datosMateria.promedio track by $index">
+        <input class="form-control" type="text" style="width: 6em" ng-model="can.prome[j].datosMateria.promedio[i]" maxlength="3" disabled>
+        </td>
+        </tr>
+       </tbody>
+       </table>
+   </div>
+
+   <button class="btn btn-warning" 
+                arial-label= "Mas.."
+                data-toggle="modal"
+                data-target="#myModalEditar"
+                ng-click="can.obtenerPromedioFinal()" title="Lista de Alumnos Promovidos">
+                <i class="fa fa-graduation-cap fa-2x" aria-hidden="true">Promovidos</i>
+            </button>
+            <button class="btn btn-warning" 
+                arial-label= "Mas.."
+                data-toggle="modal"
+                data-target="#myModalEditar2"
+                ng-click="can.obtenerPromedioFinal()" title="Lista de Alumnos No Promovidos">
+                <i class="fa fa-graduation-cap fa-2x" aria-hidden="true">No Promovidos</i>
+            </button>
+</div>
+
+
+<!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>LISTA DE PROMOVIDOS</strong>
+          </div>
+          <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">ID
+                          <th width="20%">ALUMNOS
+                          <th width="15%">PROMEDIO
+                        </tr>
+                      </thead>
+                      <tbody>
+                    
+                        <tr class="form-inline" ng-repeat="alumnos in can.aprobados">
+                          <td>
+                            <span>{{alumnos.idAlumno}}</span>
+                          </td>
+                          <td>
+                            <span>{{alumnos.nombre_completo}}</span>
+                          </td>
+                          <td>
+                            <span>{{alumnos.promedioFinal}}</span>
+                          </td>
+                        </tr>
+                        
+                        
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-xs-12 top-buffer">
+                      <a class="btn btn-warning" 
+                       aria-label="Edit"
+                       ng-click="can.listaPromovidos()"
+                       data-dismiss="modal" title="Promover alumnos">
+                       <i class="fa fa-graduation-cap fa-2x" aria-hidden="true">Promover</i>
+                      </a>
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar2">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>LISTA DE NO PROMOVIDOS</strong>
+          </div>
+          <div class="modal-body">
+            <strong>seleccione los alumnos que desae promover con condiciones</strong>
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">ID
+                          <th width="60%">ALUMNOS
+                          <th width="15%">PROMEDIO
+                          <th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                    
+                        <tr class="form-inline" ng-repeat="(i,alumnos) in can.reprobados">
+                          <td>
+                            <span>{{alumnos.idAlumno}}</span>
+                          </td>
+                          <td>
+                            <span>{{alumnos.nombre_completo}}</span>
+                          </td>
+                          <td>
+                            <span>{{alumnos.promedioFinal}}</span>
+                          </td>
+                          <td>
+                            <input type="checkbox" class="form-check-input"  ng-click="can.ver(alumnos.idAlumno)">
+                          </td>
+                        </tr>
+                        
+                        
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-xs-12 top-buffer">
+                      <a class="btn btn-warning" 
+                       aria-label="Edit"
+                       ng-click="can.comprobarPromovidos()"
+                       data-dismiss="modal" title="Promover alumnos seleccionados">
+                       <i class="fa fa-graduation-cap fa-1x" aria-hidden="true">Promover</i>
+                      </a>
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+ 

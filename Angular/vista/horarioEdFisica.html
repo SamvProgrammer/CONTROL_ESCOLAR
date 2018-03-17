@@ -1,0 +1,65 @@
+<div id="containerA" >
+	<div class="row">
+		<div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{edf.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+	<div>
+		<h2>Horario Escolar</h2>
+
+	</div>
+		
+		<span>CURSO:{{edf.ciclo}} </span><br>
+
+
+		<span>PROFESOR: {{edf.nombre_docente}}</span>
+<br>
+		
+
+	
+<div id="tablaGral">
+	<div class="table-responsive">
+  <table class="table table-striped">
+	            <thead>
+	                <tr>
+	                    <th width="10%">HORAS
+	                        <th width="10%">LUNES
+	                            <th width="10%">MARTES
+	                                <th width="10%">MIERCOLES
+	                                    <th width="10%">JUEVES
+	                                        <th width="10%">VIERNES
+	                </tr>
+	            </thead>
+	            <tbody ng-init="valores_r = ['08:00:00 - 08:50:00', '08:50:00 - 09:40:00','09:40:00 - 10:30:00', '11:00:00 - 11:50:00','11:50:00 - 12:30:00']">
+	                <tr ng-repeat="valor in valores_r" ng-init="dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']">
+	                    <td>{{valor}}</td>
+	                    <td ng-repeat="dia in dias">
+	                        <span ng-bind="edf.mostrarHorarioPorGrupo(dia, valor)"></span>
+	                    </td>
+	                </tr>
+	            </tbody>
+	        </table> 
+	    </div>
+	</div>
+
+
+
+
+	<div class="row"><center>
+		<br>
+		
+		<a class="btn btn-success" 
+                ng-click="edf.preparaPDFEDF()" title="Generar pdf">
+                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true">Genera PDF</i>
+            </a>
+		
+	</div> </center>
+	
+</div>

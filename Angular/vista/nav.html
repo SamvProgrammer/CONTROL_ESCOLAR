@@ -1,0 +1,413 @@
+<nav class="navbar navbar-inverse" role="navigation" >
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header"  >
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only" >Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" style="color: white">
+      <i class="fa fa-home fa-fw" aria-hidden="true"
+      title="Regresa a la página principal"></i>
+    </a>
+    <a class="navbar-brand" href="https://docs.google.com/uc?export=download&id=1e7tu9cnTpb2sFqU5YJJHLPSt_hwYduBL"
+     style="color: white">
+      <i class="fa fa-book fa-fw" aria-hidden="true"
+      title="Consulta el manual de usuario"></i>
+    </a>
+  </div> 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse" >
+    <!-- ***************************************************************-->   
+      <ul class="nav navbar-nav" permission permission-only="'DIRECTOR'" style="color: blue">
+      <li class="dropdown" >
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+          Docente <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" >
+          
+          <li><a ui-sref="app.director.mostrarDocente">Mostrar asignados a grupo</a></li>
+          <li><a ui-sref="app.director.agregarDocente">Agregar </a></li>
+          <li><a ui-sref="app.director.mostrarDocentesRegistrados">Registrados</a></li>
+          
+
+        </ul>
+      </li>
+           <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+          Alumno <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+        
+          <li><a ui-sref="app.director.showAlumno">Mostrar </a></li>
+          <li><a ui-sref="app.director.addAlumno">Agregar </a></li>
+         
+         
+          
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Materia <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.materia.mostrar"> Mostrar </a>
+              <a ui-sref="app.materia.agregar"> Agregar </a>
+              <!--<a ui-sref="app.materia.buscargrado"> Buscar Materia</a>-->
+            </li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Curso <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.mostrarCurso"> Mostrar</a>
+              <a ui-sref="app.director.agregarCurso"> Agregar</a>
+              <a ui-sref="app.director.finalizarCurso"> Finalizar</a>
+             
+            </li>
+        </ul>
+      </li>
+
+         <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Grupos <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.mostrarGrupo"> Mostrar</a>
+              <a ui-sref="app.director.agregarGrupo"> Agregar</a>
+              <a ui-sref="app.director.asignarGrupo"> Asignar</a>
+              <a ui-sref="app.director.cambiarAlumno"> Cambio Alumno</a>
+
+              
+              <!--<a ui-sref="app.director.cambiosGrupo"> Cambiar de Grupo</a>-->
+              
+             
+            </li>
+           
+             
+            
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Evaluaciones <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.fechasEvaluacion"> Cambiar Fechas</a>
+              <a ui-sref="app.director.registrarEvaluacion"> Registrar</a>
+             
+            </li>
+           
+             
+            
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Bajas <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.verBajasAlumnos"> Alumnos</a>
+              <a ui-sref="app.director.verBajasDocentes"> Docentes</a>
+            </li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Lista Egresados <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.egresados"> Ver</a>
+             
+            </li>
+            <li>
+              <a ui-sref="app.director.egresadospdf"> Lista PDF</a>
+             
+            </li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Estadísticas <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.estadistica"> Inicial</a>
+              <a ui-sref="app.director.estadisticaFinal"> Final</a>
+              <a ui-sref="app.director.estadisticaCiclo"> Por Ciclo</a>
+             
+            </li>
+        </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Avisos <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.director.generarAviso"> Crear</a>
+             
+            </li>
+        </ul>
+      </li>
+
+      
+
+
+    </ul>
+
+
+    </ul>
+ 
+    <!-- ********************************************************* -->
+               <!-- PROFESOR -->
+     <ul class="nav navbar-nav" permission permission-only="'DOCENTE'">  
+      
+     <li class="dropdown" id="uno">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+          Horario <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+           
+           
+           <li><a ui-sref="app.docente.generaHorario">Generar</a></li>
+           <li><a ui-sref="app.docente.Horario">ver </a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" id="idEstadistica" style="color: white" >
+          Lista Promovidos<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="app.docente.nuevos"> Ver</a></li> 
+         
+        </ul>
+      </li>
+      
+     <li class="dropdown" id="dos">
+        <a class="dropdown-toggle" data-toggle="dropdown" id="idAlumno" style="color: white">
+          Alumno <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="app.docente.lista">mostrar</a></li> 
+          <li><a ui-sref="app.docente.agregarAlumno">Agregar</a></li>
+          <li><a ui-sref="app.docente.generalistasistencia">Imprimir lista</a></li>
+         
+          <!--<li><a ui-sref="app.docente.mostrarAlumno">Eliminar Alumno</a></li>--> 
+        </ul>
+      </li>
+      
+
+      <li class="dropdown" id="tres">
+        <a class="dropdown-toggle" data-toggle="dropdown" id="idCalif" style="color: white">
+          Bimestrales <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="app.docente.evaluar">Capturar</a></li>
+           
+         
+        </ul>
+      </li>
+
+
+      <li class="dropdown" id="cinco" >
+        <a class="dropdown-toggle" data-toggle="dropdown" id="idEstadistica" style="color: white">
+          Calificaciones parciales<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="app.docente.candidatos"> Ver</a></li>         
+        </ul>
+      </li>
+
+      <li class="dropdown" id="cinco" >
+        <a class="dropdown-toggle" data-toggle="dropdown"  style="color: white">
+          Boletas <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+         
+          <li ng-if="user.uno"><a ui-sref="app.docente.copiaboleta1"> Generar</a></li> 
+          <li ng-if="user.dos"><a ui-sref="app.docente.copiaboleta2"> Generar</a></li>
+          <li ng-if="user.tres"><a ui-sref="app.docente.copiaboleta3"> Generar</a></li>
+          <li ng-if="user.cuatro"><a ui-sref="app.docente.copiaboleta4"> Generar</a></li>
+          <li ng-if="user.cinco"><a ui-sref="app.docente.copiaboleta5"> Generar</a></li>
+          <li ng-if="user.seis"><a ui-sref="app.docente.copiaboleta6"> Generar</a></li>
+         
+        </ul>
+      </li>
+      
+      <li class="dropdown" id="cuatro" >
+        <a class="dropdown-toggle" data-toggle="dropdown" id="idEstadistica" style="color: white">
+          Estadísticas <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="app.docente.generarEstadistica">Inicial</a></li> 
+          <li><a ui-sref="app.docente.generarEstadisticaFinal">Final</a></li>
+          
+         
+        </ul>
+      </li>
+
+    </ul>
+   
+
+    <!-- ***************************************************************--> 
+                     <!-- ALUMNO -->
+
+    <ul class="nav navbar-nav" permission permission-only="'ALUMNO'" >
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+          Horario<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+           <!--<li><a ui-sref="app.alumno_ver.kardex">Kardex</a></li>-->
+            <li><a ui-sref="app.alumno.Horario"> Ver</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+          Calificaciones Bimestrales<b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a ui-sref="app.alumno.verCalificaciones"> Ver</a></li>
+
+        </ul>
+      </li>
+
+    </ul>
+
+    <!-- ***************************************************************--> 
+                     <!-- ADMINISTRADOR -->
+<ul class="nav navbar-nav" permission permission-only="'ADMINISTRADOR'" >
+          <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Cambiar Director <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.administrador.cambiarDirector"> Cambiar</a>
+             
+            </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Actualizar Logos <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.administrador.cambiarLogo"> Cargar nuevo logo</a>
+             
+            </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Respaldo <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              
+              <a ui-sref="app.administrador.restaurarRespaldo"> Restaurar</a>
+              
+             
+            </li>
+        </ul>
+      </li>
+      <!--<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Historial <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.administrador.historialMovimientos"> Ver</a>
+             
+            </li>
+        </ul>
+      </li>-->
+      
+     
+    </ul>
+    <!-- ***************************************************************--> 
+                     <!-- EDFISICA -->
+<ul class="nav navbar-nav" permission permission-only="'EDFISICA'" >
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Calificaciones <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.edfisica.calificar"> Capturar</a>
+             
+            </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" style="color: white">
+           Horario <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+              <a ui-sref="app.edfisica.horario"> Ver</a>
+             
+            </li>
+        </ul>
+      </li>
+
+    </ul>
+      
+      
+     
+
+    
+
+    <ul class="nav navbar-nav navbar-right" ng-if="user.isAuthenticated()">
+          <button class="btn btn-danger" ng-click="user.logout()" title="Cerrar sesión">
+            <i class="fa fa-power-off" aria-hidden="true"></i>
+          </button>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-if="user.isAuthenticated()">
+      <span ng-if=user.docente><i aria-hidden="true"></i><b> GRADO: {{user.gradoD[0].grado}}° {{user.gradoD[0].nombre}} </b></span>
+      
+    </ul><br>
+
+     <ul class="nav navbar-nav navbar-right">
+      <span ng-if="user.isAuthenticated()"><i class="fa fa-user" aria-hidden="true"></i><b> {{user.es}}: {{user.info.nombre +" "+user.info.apPaterno+" "+user.info.apMaterno}} </b></span>
+      
+    </ul>
+
+    
+
+    <ul class="nav navbar-nav navbar-right" ng-if="!user.isAuthenticated()">
+        <li><a ui-sref="app.iniciarSesion" style="color: white">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"
+            title="acceso al sistema"></span>
+             Acceder
+        </a></li>
+
+    </ul>
+
+  </div>
+
+</nav> 

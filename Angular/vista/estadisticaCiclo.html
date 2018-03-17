@@ -1,0 +1,55 @@
+
+<div  id="containerA" align="center">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{es.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+        
+    </div>
+    
+      
+    
+   <div>
+    <h2>ESTADÍSTICA DE FIN DE CURSO</h2>
+    <label id="negro">Elija el ciclo del cual desea generar la estadística</label><br>
+    <br>
+  </div>
+
+
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            
+               <div class="input-group">
+                <span class="input-group-addon">Curso</span>
+
+                <select class="form-control" ng-model="es.curso" placeholder="elige el curso" ng-change="es.cursosById()">
+                <option ng-repeat="curso in es.datos_curso" value="{{curso.idCurso}}">{{curso.anioInicio + " - " + curso.anioFin}}</option>
+                </select>
+              </div>
+
+
+          </div>
+          <div class="col-md-4"></div>
+      </div>  
+      <br>
+      <br>
+
+
+        <button id="Estadistica" class="btn button-success" 
+                ng-click="es.generarEstadistica()" title="Generar pdf">
+                <i class="fa fa-file-pdf-o fa-fw" aria-hidden="true">Generar PDF</i>
+            </button>
+
+</div>
+
+
+
+ 

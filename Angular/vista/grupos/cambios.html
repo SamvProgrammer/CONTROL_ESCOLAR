@@ -1,0 +1,172 @@
+<div id="containerA">
+   <div class="row">
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{pc.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        
+    </div>
+  <div>
+    <h2>Lista de Alumnos</h2>
+  </div>
+<div class="table-responsive" >
+<div class="col-md-6">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input ng-model="pc.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar alumno">
+            </div>
+          </div>
+        </div>
+
+<div  id="tabla-alumno"><!--table table-striped-->
+      <table class="table table-striped">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>Curp
+          <th>Nombres
+          <th>Apellido Paterno
+          <th>Apellido Materno
+          <th>Colonia
+          <th>Calle
+          <th>Tipo Sangre
+          <th>Alergias
+          <th>Nombre Tutor 
+          <th>Número Teléfono
+          <th>Email
+          <th>Acción
+          
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="alumnos in pc.datos_alumnos | filter:pc.q | itemsPerPage:pc.pageSize" current-page="pc.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{alumnos.idAlumno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.curp}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombres}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.colonia}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.calle}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.tipoSangre}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.alergias}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombreTutor}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.numTel}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.email}}</span>
+        </td>
+        <td>
+          <!--button ng-click="pc.eliminarAlumno(alumnos.idAlumno)" id="btn-eliminarA" class="btn btn-warning" title="Elimina al alumno correspondiente a esta fila"><i class="glyphicon glyphicon-remove"></i></button>-->
+          
+              <a class="btn btn-primary" id="btn-modificar" 
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="pc.getGradoAlumno(alumnos.idAlumno)" 
+                  title="Modifica los datos del alumno correspondiente a esta fila"
+                  >
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i>Modificar</a>
+
+               
+            
+
+
+
+        </td>
+      </tr>
+    </tbody>
+
+    </table>
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+    
+    
+   </div>
+
+
+
+   <!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>NOMBRE: {{pc.datos_grado_alumno.nombres}}</strong>
+          </div>
+          <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">
+                          <th width="20%">DATOS
+                        </tr>
+                      </thead>
+                      <tbody>
+                    
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>CURP</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"  ng-model="pc.datos_grado_alumno.nombre" value="{{pc.datos_grado_alumno.nombre}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          
+                        </tr>
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-xs-12 top-buffer">
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" >
+                      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                      </a>
+
+                       <a class="btn btn-primary" 
+                       aria-label="Edit"
+                       ng-click="pc.eliminarAlumno(pc.datos_grado_alumno)"
+                       data-dismiss="modal" title="guardar">
+                       <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div
+   

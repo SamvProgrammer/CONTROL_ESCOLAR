@@ -1,0 +1,21 @@
+<div id="containerA">
+	<div class="row">
+		<div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{cc.ciclo}}</label>
+        <h2>Finalizar Curso</h2>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+	<div class="row">
+	<div class="col-md-12">
+		¡Al finalizar este curso, los docentes ya no podrán hacer cambios sobre ninguno de los alumnos
+		que por el momento tienen a cargo!<br>
+		<button id="Finalizar"  ng-disabled="cc.cursoEnEspera.length===0" ng-click="cc.nuevoCiclo()">Finalizar Ciclo Anterior</button>
+	</div>
+</div>
+</div>

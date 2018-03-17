@@ -1,0 +1,54 @@
+body{
+	margin:0;
+	padding:0;
+	/*background:url(fondo6.jpg);*/
+	background:url(fondo7.jpg);
+   background-repeat:no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.usuarioDirector{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,50%);
+	width:390px;
+	height: 420px;
+	box-sizing: border-box;
+	/*background:rgba(0,0,64,.7);*/
+	background:rgba(0,100,0,.9);
+}
+.userimagen{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	position:absolute;
+	top:-40px;
+	left:calc(50% - 50px);
+}
+h4{
+	margin: 0;
+	padding: 0 0 20px;
+	color:#ffffff;
+	text-align: center;
+}
+p{
+	margin: 0;
+	padding: 0 0 20px;
+	color:#ffffff;
+	text-align: center;
+	border-width: :10px;
+}
+#ipusdi{
+    width: 250px;
+    height: 30px;
+}
+
+#ipcodi{
+    width: 250px;
+    height: 30px;
+}

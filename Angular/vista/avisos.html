@@ -1,0 +1,95 @@
+<div id="containerAb">
+	<div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO: {{api.ciclo}}</label>
+
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+	<div class="row" ng-controller="ApiCtrl">
+	<div class="col-xs-6">
+		<div>
+			<h2>CALENDARIO DE AVISOS</h2>
+		</div>
+		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-8" style="text-align: left;margin-left: 20px;">
+			<label>1.-Primero tiene que acceder al correo con el que se compartirán los eventos, dando clic en el botón "Acceso google calendar", posteriormente rellenar correo electrónico y contraseña, una vez terminando esto, lo regresará a la página.</label>
+			<input type="button" class="btn btn-success" value="Acceso google calendar" name="" ng-click="enviar();"><br><br>
+			
+			<!--<label>2.-De clic en el botón "insertar Calendarios"</label>
+			<input type="button" class="btn btn-success" value="Insertar calendarios" name="" ng-click="insertarCalendarios();">
+			<br>
+			<br>
+			<label>3.-Seleccione el calendario en el que se publicará el aviso</label>
+            <select class="form-control" ng-model="identificadorCalendario">
+				<option value="">
+					Seleccionar calendario
+				</option>
+				<option ng-repeat="item in arreglo" value="{{item.id}}">{{item.summary}}</option>
+			</select>-->
+			<br>
+			<label>2.-Elija la fecha del evento</label>
+			<input type="text"  name="dato" class="form-control" ng-model="api.calendario" ng-blur="api.validaFechaNacimiento($event)">
+			<br>
+			<label>3.-Escriba los detalles del evento como hora, lugar, y asunto</label>
+			<input type="text" placeholder="Ingresar evento del calendario" class="form-control" name="" ng-model="api.textoCalendario">
+			
+			<br>
+			<br>
+
+			<label>4.-Seleccione con quien compartirá la información del evento</label>
+			<!--<input type="text" placeholder="Correo para compartir calendario" class="form-control" name="" ng-model="txtCorreoCalendario">
+			<select class="form-control" ng-model="api.grupo"  ng-blur="api.getDatosGrupos()" placeholder="elige el grupo">
+
+			<label>6.-Seleccione conn quien compartira la información del evento</label>
+			<input type="text" placeholder="Correo para compartir calendario" class="form-control" name="" ng-model="txtCorreoCalendario">-->
+			<select class="form-control" ng-model="api.grupo"  ng-change="api.getDatosGrupos()" placeholder="elige el grupo">
+				<option ng-repeat="grupos in api.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+			</select>
+			<br>
+			<br>
+			<input type="button" class="btn btn-success" value="Agregar eventos" name="" ng-click="api.agregarEvento();">
+			<br><br>
+			<!--<input type="button" class="btn btn-success" value="Compartir" name="" ng-click="compartir();">-->
+			<br>
+			<br>
+			
+		</div>
+		
+	</div>
+	<div class="col-xs-6">
+		<div>
+			<h2>MENSAJES DE TEXTO </h2>
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8" class="col-xs-8" style="text-align: left;margin-left: 150px;">
+			<!--<label>1.-Seleccione la región a la que pertenece el número telefónico</label>
+			<select class="form-control" ng-model="api.region">
+				<option value="">"Seleccionar región"</option>
+				<option value="52">+52</option>
+			</select><br><br>-->
+			<label>1.-Elija a quien enviará los mensajes</label>
+			
+			<!--<input type="text" placeholder="Ingresar número de celular" name="" class="form-control" ng-model="api.numero">-->
+			<select class="form-control" ng-model="api.grupo"  ng-change="api.getDatosGrupos()" placeholder="elige el grupo">
+				<option ng-repeat="grupos in api.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+			</select>
+			<!--<select class="form-control" ng-model="api.grupo"  ng-blur="api.getDatosGrupos()" placeholder="elige el grupo">
+				<option ng-repeat="grupos in api.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+			</select>--><br><br><br>
+			<label>3.-Escriba el texto que desee enviar</label>
+			<input type="text" placeholder="Ingresar texto a envíar" class="form-control" ng-model="api.texto"><br>
+			<input type="button" class="btn btn-success" value="Enviar mensaje" name="" ng-click="api.enviarMensaje();">
+		</div>
+		<div class="col-xs-2"></div>
+
+	</div>
+</div>
+</div>

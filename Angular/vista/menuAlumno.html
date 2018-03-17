@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="css/estilos-home.css" type="text/css">
+
+<!--
+<nav class="navbar navbar-default" role="navigation">
+
+  <div class="navbar-header">
+
+    <a class="navbar-brand" href="#">
+      <i class="glyphicon glyphicon-home" aria-hidden="true" id="btn-home"></i>
+    </a>
+     <h2 id="titulo">Sistema de Control de Alumnos</h2>
+
+     <a href="javascript:history.back(-1);"><i id="btn-regresar" class="glyphicon glyphicon-hand-left" aria-hidden="true"></i></a>
+
+   
+
+  </div> 
+    
+     
+
+
+ 
+</nav> -->
+
+
+
+
+<div class="container-fluid" id="container-menu">
+   <div class="container">
+      <div class="row clearfix">
+         <div class="col-md-12 column">
+            <nav class="navbar navbar-default" id="menu" role="navigation">
+            <div class="navbar-header">
+
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <div class="menu-menu-principal-container">
+                 
+                  <ul  id="menu-menu-principal" class="menu" permission permission-only="'DIRECTOR'" >
+                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                        ALUMNO <b class="caret"></b>
+                        </a>
+                        <ul class="sub-menu">
+                           <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                              <a ui-sref="app.director.mostrarAlumnos">DATOS DE ALUMNOS</a>
+                           </li>
+                           <!--
+                           <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                              <a ui-sref="app.director.altaAlumno">ALTA ALUMNO</a>
+                           </li>-->
+                        </ul>
+                     </li>
+                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                        DOCENTE <b class="caret"></b>
+                        </a>
+                        <ul class="sub-menu">
+                           <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                              <a ui-sref="app.director.mostrarDocentes">LISTAR DOCENTES</a>
+                           </li>
+                        </ul>
+                     </li>
+                     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                        CARGA ACADEMICA <b class="caret"></b>
+                        </a>
+                        <ul class="sub-menu">
+                           <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                              <a ui-sref="app.director.cargaAcademica">GENERAR HORARIO DOCENTE</a>
+                           </li>
+                           <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                              <a ui-sref="app.director.horarioGrupos"> VER HORARIO POR GRUPOS</a>
+                           </li>
+                        </ul>
+                     </li><!--
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                           <a class="dropdown-toggle" data-toggle="dropdown">
+                           CALIFICACIONES <b class="caret"></b>
+                           </a>
+                           <ul class="sub-menu">
+                              <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                                 <a ui-sref="app.director.calificaciones">SUBIR CALIFICACIONES</a>
+                              </li>
+                           </ul>
+                        </li>-->
+
+                  </ul>
+
+                  <ul  id="menu-menu-principal" class="menu" permission permission-only="'DOCENTE'" >
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                           <a class="dropdown-toggle" data-toggle="dropdown">
+                           CALIFICACIONES <b class="caret"></b>
+                           </a>
+                           <ul class="sub-menu">
+                              <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                                 <a ui-sref="app.docente.calificaciones">SUBIR CALIFICACIONES</a>
+                              </li>
+                              <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                                 <a ui-sref="app.docente.consultarCalificaciones">CONSULTAR CALIFICACIONES</a>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-916">
+                           <a class="dropdown-toggle" data-toggle="dropdown">
+                           MIS DATOS<b class="caret"></b>
+                           </a>
+                           <ul class="sub-menu">
+                              <li id="menu-item-917" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-917">
+                                 <a ui-sref="app.docente.misDatos">CONSULTAR</a>
+                              </li>
+                           </ul>
+                        </li>
+                        
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right" ng-if="auth.isAuthenticated()">
+                     <button class="btn btn-danger" ng-click="auth.logout()" title="Cerrar sesión">
+                     <i class="fa fa-power-off" aria-hidden="true"></i>
+                     </button>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right" ng-if="!auth.isAuthenticated()">
+                     <li><a ui-sref="app.iniciarSesion">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        Acceder
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

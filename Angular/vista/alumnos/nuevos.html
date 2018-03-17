@@ -1,0 +1,68 @@
+<div id="containerA">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{nv.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+  <div>
+    <h2>Lista de Alumnos Promovidos</h2>
+  </div>
+<div class="table-responsive" >
+<div>
+  <h3>Es fundamental el dar de alta tus alumnos, debido a que sólo así vas a poder evaluarlos en las fechas establecidas</h3>
+</div>
+
+<div  id="tabla-alumno"><!--table table-striped-->
+      <table class="table table-striped">
+      <thead>
+        
+        <tr> 
+          <th>Id          
+          <th>Apellido Paterno
+          <th>Apellido Materno
+          <th>Nombres 
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody ng-repeat="alumnos in nv.lista">
+      <tr class="form-inline">
+        <td>
+          <span>{{alumnos.idAlumno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.apPaterno}}</span>
+        </td>
+       <td>
+          <span>{{alumnos.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombres}}</span>
+        </td>
+        
+      </tr>
+    </tbody>
+
+    </table>
+   
+    
+    
+   </div>
+
+   <div>
+               <button class="btn btn-success" 
+                ng-click="nv.habilitar()" title="habilitar alumnos nuevos">
+                <i class="fa fa-graduation-cap fa-2x" aria-hidden="true">Habilitar Alumnos</i>
+            </button>
+   </div>
+
+</div>
+   

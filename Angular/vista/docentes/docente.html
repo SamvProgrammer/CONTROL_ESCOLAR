@@ -1,0 +1,63 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/estilos-docente.css" type="text/css">
+
+<!--<style >
+  body{
+    background-image: url("img/fondo.png");
+  }
+</style>-->
+
+</head>  
+<body>  
+
+
+
+<!--//////////////////////////////ALUMNOS/////////////////////////////////////////////////-->
+
+<div class="panel panel-success" id="alumno">
+	<div class="panel-heading"><center>ALUMNOS</center></div>
+  <div class="panel-body">
+
+  	
+  	<button type="submit" class="btn btn-primary" id="btn-alta"
+  			ui-sref="app.alumno.agregar">Alta</button>
+
+  	<button type="submit" class="btn btn-primary" id="btn-baja"
+  			ui-sref="app.alumno.eliminar">Baja</button>
+
+  	<button type="submit" class="btn btn-primary" id="btn-lista"
+  			ui-sref="app.usuario.lista">Listar</button>
+
+  	<button type="submit" class="btn btn-primary" id="btn-buscar"
+  			ui-sref="app.alumno.buscar">Buscar</button>
+
+    <button type="submit" class="btn btn-primary" id="btn-calificar"
+        ui-sref="app.alumno.calificar">Calificar</button>
+
+
+  </div>
+</div>
+
+
+<div class="panel panel-success" id="materia">
+  <div class="panel-heading"><center>MATERIAS</center></div>
+  <div class="panel-body">
+
+
+    <button type="submit" class="btn btn-primary" id="btn-lista-materia"
+        ui-sref="app.materia.mostrar">Listar</button>
+        <button type="submit" class="btn btn-primary" id="btn-asistencia-materia"
+        >Generar Listas</button>
+        <button type="submit" class="btn btn-primary" id="btn-horario-materia"
+        >Generar Horario</button>
+
+  </div>
+</div>
+
+</body>
+</html>

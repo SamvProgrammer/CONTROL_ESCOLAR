@@ -1,0 +1,79 @@
+ <div id="containerA">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{calif.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+ <form action="" id="myForm" name="myForm">
+  <div>
+    <h2>Calificaciones</h2>
+  </div>
+  
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Bimestre</span>
+
+           <select class="form-control" ng-model="calif.bim" ng-change="calif.obtenerEvaluaciones()">
+                <option ng-repeat="bimes in calif.bimestres" value="{{bimes.idBimestre}}">{{bimes.nombre}}</option>
+           </select>
+
+            </div>
+          </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+
+      <div id="tablaGral"><!--table table-striped-->
+
+      <table class="table table-striped">
+      <thead>
+        
+          <th ng-repeat="(i, materias) in calif.evaluaciones[0].datosMateria.nombreMateria track by $index">
+          {{materias}}</th>
+          
+        
+        </tr>
+      </thead>
+      <!--
+      model="califGrupoAlumno.registro[i].bimestre1
+      -->
+       <tbody>
+        <tr class="form-inline" ng-repeat="(j, alumnos) in calif.evaluaciones">
+        
+        <td ng-repeat="(i, materias) in alumnos.datosMateria.califMateria track by $index">
+        <input class="form-control" type="number" step="any" style="width: 6em" ng-model="calif.evaluaciones[j].datosMateria.califMateria[i]" disabled="">
+        </td>
+        
+        </tr>
+       </tbody>
+       </table>
+   </div>
+
+</div>
+
+    
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+ 

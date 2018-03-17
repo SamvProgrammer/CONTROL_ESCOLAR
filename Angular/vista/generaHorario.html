@@ -1,0 +1,191 @@
+<div id="containerA" class="col-md-10">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:  {{ hc.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+    <form action="" id="myForm" name="myForm" ng-if="hc.estaCompleto" ng-cloak>
+  <div align="center">
+    <h2>Generar horario</h2>
+    <label>Seleccione el dia del que va a elegir horario y de este modo apareceran las horas para elegir materia.</label>
+  </div>
+  <div class="container">
+      
+      
+      <div class="col-md-5">
+
+      </div>
+      <div class="col-md-5"></div>
+      
+      <div class="col-md-4">
+        <flash-message>
+        </flash-message>
+      </div>
+
+      <div class="col-md-12"></div>
+      <div class="col-md-1"></div>
+      <div class="col-md-10"  ng-cloak>
+                <table class="table table-striped">
+    <thead>
+       <div class="col-md-3">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Día</span>
+            <select class="form-control" ng-model="hc.dia_seleccionado" ng-options="val.nombre as val.nombre for val in hc.diasSemana" ng-change="hc.obtenerHorarioIfExiste()" >
+               <option value="">Seleccione día</option>
+            </select>
+            </div>
+          </div>
+      </div>
+        <tr>
+          <th width="10%">Hora</th>
+          <th width="25%" ng-bind="hc.dia_seleccionado"  align="center"></th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="elemento in hc.objHorario.horas track by $index">
+      <tr class="form-inline">
+        <td>
+          <span>{{elemento.hora}}</span>
+        </td>
+
+        <td>
+            <div class="col-md-8" ng-if="hc.flag">
+        <div class=" form-group">
+          <div class="input-group">
+            <span class="input-group-addon">Docentes</span>
+                  <ui-select ng-model="elemento.selected" theme="select2" ng-disabled="disabled" style="min-width: 200px;" required>
+                  <ui-select-match placeholder="Seleccione Docente">{{$select.selected.nombres}} {{$select.selected.apPaterno}} {{$select.selected.apPaterno}}</ui-select-match>
+                  
+                  <ui-select-choices repeat="profesor in hc.datos_docentes | propsFilter: {nombres: $select.search, apPaterno: $select.search, apMaterno: $select.search}">
+                      <div ng-bind-html="profesor.nombres | highlight: $select.search"></div>
+                      <small>
+                          {{profesor.apPaterno}}
+                          {{profesor.apMaterno}}                      
+                      </small>
+                  </ui-select-choices>
+                </ui-select>
+                <a class="btn btn-default" ng-click="elemento.selected = undefined" >
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+          </div>
+        </div>
+      </div>
+         <div class="col-md-2"></div>
+          <div class="col-md-8" >
+            <div class=" form-group">
+              <div class="input-group" ng-if="hc.evalua($index)">
+                <span class="input-group-addon">Materia</span>
+                      <ui-select ng-model="elemento.selected" theme="select2" ng-disabled="elemento.selected !== undefined" style="min-width: 200px;" ng-change="hc.comprobarMateria(elemento.selected)">
+                      <ui-select-match placeholder="Seleccione Materia" >
+                      {{$select.selected.nombre}}</ui-select-match>
+                      
+                      <ui-select-choices repeat="materia in hc.materiasGrado | propsFilter: {nombre: $select.search}" ui-disable-choice="materia.horas <= 0">
+                          <div ng-bind-html="materia.nombre | highlight: $select.search"></div>
+                          <small>
+                                                
+                          </small>
+                      </ui-select-choices>
+                    </ui-select>
+                      <a class="btn btn-default" ng-click=" hc.restaurarHora(elemento.selected);elemento.selected = undefined" >
+                         <i class="fa fa-trash" aria-hidden="true"></i>
+                     </a>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-8" ng-if="!hc.evalua($index)">
+          <span>RECESO</span>
+        </div>
+        </td>
+  </table>
+ 
+<div class="col-md-5"></div>
+<div class="col-md-2">
+        <a  class="btn btn-success" 
+            title="Actualizar horario"
+            ng-if="hc.debeActualizar"
+             ng-click="hc.registro()">
+            <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+            </a>
+
+        <a  class="btn btn-primary" 
+            title="Guardar Regitro de asignaciones..."
+            ng-if = "hc.debeInsertar" 
+            ng-click="hc.registro()">
+            <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+         </a>
+       
+        <a class="btn btn-danger" 
+                data-toggle="modal"
+                ng-if = "hc.visualiza"
+                title="Cancelar este horario definitivamente..." 
+                data-target="#confirmacion-cancelar"
+                >
+                <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+              </a>
+</div>
+<div class="col-md-5"></div>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+  
+      
+
+        <div class="modal" id="confirmacion-cancelar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" align="center">
+                          <!-- more usage of angular data binding -->
+                            <strong>Ventana de confirmación</strong>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row top-buffer">
+                                <div class="col-md-12">
+                                  
+                                    <span>¿Desea cancelar la asignacion de horas para este grupo?</span>
+                                </div>
+                                <div class="col-xs-12 top-buffer">
+                                  <!-- angular data binding and data-dismiss for bootstrap -->
+                      
+                      <a class="btn btn-success pull-left" 
+                          aria-label="Ok"
+                          data-dismiss="modal"
+                          title="Confirmar cancelacion..." 
+                          ng-click = "hc.vacia()">
+                          <i class="fa fa-check" aria-hidden="true"></i>
+                      </a>
+
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       title="Ignorar..." 
+                       data-dismiss="modal">
+                      <i class="fa fa-times " aria-hidden="true"></i>
+                      </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</form>
+    <div  class="col-md-10">
+       <div class="alert alert-success col-md-6 col-md-offset-3" ng-if="!hc.estaCompleto">
+  <!--class="alert alert-info"
+      class="alert alert-warning"
+      class="alert alert-danger"-->
+           <span>Horario completo</span>
+
+        </div>
+
+        
+    </div>
+  
+</div>
+</div>

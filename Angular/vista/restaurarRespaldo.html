@@ -1,0 +1,32 @@
+<div id="containerA" ng-controller="DocenteCtrl">
+	<div>
+		<h2>Restaurar Respaldo</h2>
+	</div>
+
+	
+
+	<select class="form-control" ng-model="valorRespaldo">
+		<option value="">Escoger punto de restauración</option>
+		<option ng-repeat="item in arregloBackups" value="{{item}}" >{{item}}</option>
+	</select>
+	
+			<a class="btn btn-danger" 
+		 title="Restaurar respaldo" ng-click="restaurarBaseDatos();">
+			<i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+		</a>
+
+<div>
+	
+	<h2 id="anuncio" style="display: none">¡Respaldo generado!</h2>
+</div>
+
+
+<script>
+	function ver(){
+
+
+	
+	document.getElementById("anuncio").style.display="block";
+	}
+</script>
+</div>

@@ -1,0 +1,44 @@
+<div id="containerA">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{gc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+    <div>
+        <h2>Datos de Grupo</h2>
+    </div>
+    <div id="informacion" role="alert">
+          <h4>Información general</h4>
+    </div><br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <label>Grado:</label><br>
+             <select ng-model="gc.objGrupo.grado">
+                <option>1</option>   
+                <option>2</option>   
+                <option>3</option>   
+                <option>4</option>   
+                <option>5</option>   
+                <option>6</option>   
+             </select><br>
+             <label>Nombre del Grupo:</label><br>
+             <input type="text" name="nomgrupo" maxlength="1" ng-model="gc.objGrupo.nombre" ng-keypress="gc.getevaluargrupo($event)" onkeyup="javascript:this.value=this.value.toUpperCase();"><br>
+
+             <!--<label>Total de alumnos en el grupo:</label><br>
+             <input type="text" name="nomgrupo" ng-model="gc.objGrupo.totalAlumnos" ng-blur="gc.getTotalAlumnos()"  disabled><br>-->
+        </div>
+        <div class="col-md-4"></div>
+    </div><br>
+     <center><button ng-click="gc.agregarGrupo(gc.objGrupo)" id="Agregar" class="btn btn-info">Agregar</button>
+    <button ng-click="gc.limpiainputs()" id="Cancelar" class="btn btn-info">Cancelar</button></center>
+
+
+
+</div>

@@ -1,0 +1,28 @@
+<div class="form-control">
+	<div class="col-md-5">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Alumnos</span>
+
+           <select class="form-control" ng-model="bol.alumnoSelect" ng-change="bol.obtenerBoleta()">
+                <option ng-repeat="boleta in bol.alumnos" value="{{boleta.idAlumno}}">{{boleta.nombre}}</option>
+           </select>
+
+            </div>
+          </div>
+   
+
+</div>
+
+</div>
+
+ </div>
+    <a class="btn btn-danger" 
+                title="Generar pdf" ng-if="bol.alumnoSelect" >
+                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" ng-click="bol.PDFboleta()"></i>
+            </a>
+
+    <div>
+
+  
+

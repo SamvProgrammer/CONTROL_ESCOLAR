@@ -1,0 +1,409 @@
+<div  id="containerAb" align="center">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{b1.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>    
+    </div>
+    
+      
+    
+   <div>
+    <h2>REPORTE DE EVALUACIÓN</h2>
+    <label id="negro">Paso 1. elija el nombre del alumno e ingrese el folio</label><br>
+    <br>
+  </div>
+
+
+        <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+              <div class="input-group">
+            <span class="input-group-addon">Alumnos</span>
+
+           <select class="form-control" ng-model="b1.alumnoSelect" ng-change="b1.cabeceraAlumno(); b1.evaluaciones()">
+                <option ng-repeat="boleta in b1.alumnos" value="{{boleta.idAlumno}}">{{boleta.nombre}}</option>
+           </select>
+
+           
+          </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+        <br>
+        <div class="row" align="center">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="input-group">
+              <span class="input-group-addon">FOLIO</span>
+              <input class="form-control" type="text" ng-model="b1.folio" maxlength="13" ng-blur="b1.getEvaluarFolio($event)" onkeyup="javascript:this.value=this.value.toUpperCase(); ">
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+          
+
+<div>
+  <br><br>
+    
+    <label id="negro">Paso 2. ingrese el número de inasistecias del alumno en el espacio habilitado, de no tener, deje el espacio vacío</label><br>
+    <br>
+  </div>
+<br>
+<div id="tablaGral">
+  
+
+      <table class="table table-bordered">
+      <thead>
+        
+          <th>BIMESTRE 1</th>
+          <th>BIMESTRE 2</th>
+          <th>BIMESTRE 3</th>
+          <th>BIMESTRE 4</th>
+          <th>BIMESTRE 5</th>
+          
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+        <td>
+        <center><input class="form-control" type="text" step="any" style="width: 6em" ng-model="b1.uno" ng-disabled="!b1.b1" ng-keypress="b1.valida($event,1)"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text" step="any" style="width: 6em" ng-model="b1.dos" ng-disabled="!b1.b2" ng-keypress="b1.valida($event,1)"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text" step="any" style="width: 6em" ng-model="b1.tres" ng-disabled="!b1.b1" ng-keypress="b1.valida($event,1)"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text" step="any" style="width: 6em" ng-model="b1.cuatro" ng-disabled="!b1.b4" ng-keypress="b1.valida($event,1)"> </center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text" step="any" style="width: 6em" ng-model="b1.cinco" ng-disabled="!b1.b5" ng-keypress="b1.valida($event,1)"></center>
+        </td>
+        </tr>
+       </tbody>
+       </table>
+
+       
+     </div>
+     <br>
+     <div id="tablaGral">
+        <table class="table table-bordered">
+         <thead>
+           <thead>MARQUE SI EL APRENDIZAJE DEL(DE LA) ALUMNO(A) SE ENCUENTRA EN RIESGO</thead>
+         </thead>
+         <tbody>
+           <tr>
+             <td>ALERTA</td>
+             <td>ALERTA</td>
+             <td>ALERTA</td>
+           </tr>
+           <tr> 
+             <td>
+              <input type="radio" class="form-check-input" name="rad" ng-click="b1.verRadio2('riesgo1')">
+             </td>
+             <td>
+               <input type="radio" class="form-check-input" name="rad" ng-click="b1.verRadio2('riesgo2')">
+             </td>
+             <td>
+               <input type="radio" class="form-check-input" name="rad" ng-click="b1.verRadio2('riesgo3')">
+             </td>
+           </tr>
+         </tbody>
+       </table>
+       
+     </div>
+     <br>
+    <div>
+    <label id="negro">Paso 3. Escriba las observaciones y/o recomendaciones"</label>
+  </div>
+     <div>
+       <table class="table table-bordered">
+      <thead>
+          <th> </th>
+          <th>BIMESTRE 1</th>
+          <th>BIMESTRE 2</th>
+          <th>BIMESTRE 3</th>
+          <th>BIMESTRE 4</th>
+          <th>BIMESTRE 5</th>
+          
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+          <td>ESCRITURA</td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.escB1" ng-disabled="!b1.b1"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.escB2" ng-disabled="!b1.b2"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.escB3" ng-disabled="!b1.b3"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.escB4" ng-disabled="!b1.b4"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.escB5" ng-disabled="!b1.b5"></center>
+        </td>
+        </tr>
+        <tr>
+          <td>LECTURA</td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.lecB1" ng-disabled="!b1.b1"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.lecB2" ng-disabled="!b1.b2"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.lecB3" ng-disabled="!b1.b3"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.lecB4" ng-disabled="!b1.b4"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.lecB5" ng-disabled="!b1.b5"></center>
+        </td>
+        </tr> <tr>
+          <td>MATEMÁTICAS</td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.matB1" ng-disabled="!b1.b1"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.matB2" ng-disabled="!b1.b2"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.matB3" ng-disabled="!b1.b3"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em"  ng-model="b1.matB4" ng-disabled="!b1.b4"></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 11em; height: 5em" ng-model="b1.matB5" ng-disabled="!b1.b5"></center>
+        </td>
+        </tr>
+       </tbody>
+       </table>
+     </div>
+     <div align="center">
+  <br>
+    
+    <label id="negro">Paso 4. El(la) maestro(a) registrará, al concluir el segundo bimestre o en el momento del ciclo escolar en el que observe difcultades en el desempeño del(de la) alumno(a), información acerca de las
+necesidades de apoyo que éste(a) requiere y, las acciones que la escuela y la familia deben realizar conjuntamente con el educando para favorecer que avance en los aprendizajes
+esperados, establecido en los programas de estudio. En caso de requerir más espacio, utilice hojas adicionales"</label><br>
+    <br>
+  </div>
+     <div id="tabla-alumno">
+       <table class="table table-bordered">
+        <center>
+      <thead>
+          
+          <th>BIMESTRE </th>
+          <th>ASIGNATURA</th>
+          <th>OBSERVACIONES ESPECIFICAS</th>
+          <th>RECOMENDACIONES (ESPECIFICAR LOS APOYOS REQUERIDOS)</th>          
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 20em; height: 5em" ng-model="b1.bimest" ></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 20em; height: 5em" ng-model="b1.asignatura" ></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 20em; height: 5em" ng-model="b1.especificas" ></center>
+        </td>
+        <td>
+        <center><input class="form-control" type="text"  style="width: 20em; height: 5em" ng-model="b1.apoyos" ></center>
+        </td>
+        </tr>
+        
+       </tbody>
+       </center>
+       </table>
+     </div>
+     <div align="center">
+  <br>
+    
+    <label id="negro">Paso 5. Rellene los botones que cree son necesarios</label><br>
+    <br>
+  </div>
+ 
+
+     <div>
+       <table class="table table-bordered">
+        <center>
+      <thead>
+          
+          <th width="30%">
+            Los siguientes aspectos se relacionan con el desarrollo de la comprensión al leer y escribir, permitiendo informar
+            si el(la) alumno(a) </th>
+          <th width="15%">SIEMPRE</th>
+          <th width="15%">CASI SIEMPRE</th>
+          <th width="15%">EN OCASIONES</th>
+          <th>REQUIERE APOYO ADICIONAL</th>          
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr>
+          <td></td>
+        <td>
+          <span> Ago </span>
+          <span> Nov </span>
+          <span> Mar </span>
+          <span> Jun </span>
+        </td>
+        <td>
+          <span> Ago </span>
+          <span> Nov </span>
+          <span> Mar </span>
+          <span> Jun </span>
+        </td>
+        <td>
+          <span> Ago </span>
+          <span> Nov </span>
+          <span> Mar </span>
+          <span> Jun </span>
+        </td>
+        <td>
+          <span> Ago </span>
+          <span> Nov </span>
+          <span> Mar </span>
+          <span> Jun </span>
+        </td>
+        
+        </tr>
+        <tr>
+          <td>
+            <span>1.-PUEDE TRATAR UN TEXTO A PARTIR DE SU TÍTULO</span>
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('ago1')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('nov1')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('mar1')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('jun1')">
+            
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('ago2')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('nov2')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('mar2')">
+            <input type="radio" class="form-check-input" name="radio" ng-click="b1.verRadiofila1('jun2')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('ago3')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('nov3')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('mar3')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('jun3')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('ago4')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('nov4')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('mar4')">
+            <input type="radio" class="form-check-input"  name="radio" ng-click="b1.verRadiofila1('jun4')">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>2.-LOCALIZA INFORMACIÓN ESPECÍFICA EN UN TEXTO</span>
+          </td>
+          <td>
+            <input type="radio" class="form-check-input"  name="radio2" ng-click="b1.verRadiofila2('ago5')">
+            <input type="radio" class="form-check-input"  name="radio2" ng-click="b1.verRadiofila2('nov5')">
+            <input type="radio" class="form-check-input"  name="radio2" ng-click="b1.verRadiofila2('mar5')">
+            <input type="radio" class="form-check-input"  name="radio2" ng-click="b1.verRadiofila2('jun5')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('ago6')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('nov6')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('mar6')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('jun6')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('ago7')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('nov7')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('mar7')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('jun7')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('ago8')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('nov8')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('mar8')">
+            <input type="radio" class="form-check-input" name="radio2" ng-click="b1.verRadiofila2('jun8')">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>3.-OPINA SOBRE EL CONTENIDO DE UN TEXTO</span>
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('ago9')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('nov9')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('mar9')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('jun9')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('ago10')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('nov10')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('mar10')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('jun10')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('ago11')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('nov11')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('mar11')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('jun11')">
+          </td>
+          <td>
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('ago12')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('nov12')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('mar12')">
+            <input type="radio" class="form-check-input" name="radio3" ng-click="b1.verRadiofila3('jun12')">
+          </td>
+        </tr>
+        
+       </tbody>
+       </center>
+       </table>
+     </div>
+<div align="center">
+  <br>
+    
+    <label id="negro">Paso 6. De click al botón "Generar copia de boleta"</label><br>
+    <br>
+  </div>
+
+
+    <center>
+   <a id="Agregar" class="btn btn-success" 
+                title="Generar pdf" style="width: 300px">
+                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true" ng-click="b1.llena();b1.guardarBoleta()" style="font-size: 20px" >Generar copia de boleta</i>
+            </a>
+            </center>
+
+          </div>
+
+    
+   </div>
+</div>
+</div>
+
+</div>
+
+
+
+ 

@@ -1,0 +1,182 @@
+<div id="containerA">
+    <div class="row">
+            <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO: {{cam.ciclo}}</label>
+
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+    <div>
+    <h2>Cambio Director</h2>
+    <br>
+    <br>
+  </div>
+  <div class="row">
+          <div class="col-md-3"></div>
+        <div class="col-md-6" ng-repeat="directorA in cam.actual">
+          <label>Director(a) Actual: </label>
+          <span>{{directorA.nombre_completo}}</span>
+          <br>
+          <br>
+
+          
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+    <div>
+      <h2><strong>Lista de Docentes con Grupo Asignado</strong></h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      
+          <div class="col-md-4" id="tabla-alumno">
+      <table class="table table-striped">
+      <thead>
+        
+        <tr>
+          <th>Id 
+          <th>Nombre Docente
+          <th>Director
+          
+          
+        </tr>
+      </thead>
+       <tbody>
+      <tr class="form-inline" ng-repeat="docentes in cam.docentes">
+        <td>
+          <span>{{docentes.idDocente}}</span>
+        </td >
+        <td>
+          <span>{{docentes.nombre_completo}}</span>
+        </td>
+        <td>
+          <input type="radio" class="form-check-input" name="director" ng-click="cam.ver(docentes.idDocente)" ng-model="cam.estado">
+        </td>
+         
+      </tr>
+    </tbody>
+
+    </table>
+
+      </div>
+      <div class="col-md-4"></div>
+
+    </div>
+    <div>
+    <h2><strong>Lista de Docentes Sin Grupo Asignado</strong></h2>
+  </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          
+            <table class="table table-striped">
+      <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr class="form-inline" ng-repeat="docentes in cam.docentes_sinGrupo">
+          <td>
+            <span>{{docentes.idDocente}}</span>
+          </td>
+          <td>
+          <span>{{docentes.nombre_completo}}</span>
+        </td>
+          <td>
+            <input type="radio" class="form-check-input" name="director" ng-click="cam.ver(docentes.idDocente)" ng-model="cam.estado">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+          <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+    
+    <button id="Agregar" ng-click="cam.CambiarDirect()" class="btn btn-info">
+      Aplicar
+    </button>
+
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+      <div class="modal" id="cambioGrupo">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>GRUPO: {{cam.grup.grado}} {{cam.grup.nombre}}</strong>
+          </div>
+          <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                  <center>
+                    <strong>Estos son los Docentes disponibles sin Grupo: </strong>
+                      <br>
+                      <br>
+                        <table class="table table-striped">
+                          <thead>
+                            <th>Id</th>
+                            <th>Nombre Docente</th>
+                            <th></th>
+                          </thead>
+                          <tbody>
+                            <tr class="form-inline" ng-repeat="docentes in cam.docentes_sinGrupo">
+                              <td>
+                                <span>{{docentes.idDocente}}</span>
+                              </td>
+                              <td>
+                              <span>{{docentes.nombre_completo}}</span>
+                            </td>
+                              <td>
+                                <input type="radio" class="form-check-input" name="director2" ng-click="cam.ver2(docentes.idDocente)" ng-model="cam.estado">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <br>
+                        
+                        <br>
+                        <strong>Una vez que se asigna el grupo, puedes ver al docente en la parte de docentes sin grupo asignado, posteriormente elegirlo como director</strong>
+                        <br>
+                        <br>
+                    </center>
+                </div>
+
+                <div class="col-md-12 top-buffer">
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" 
+                       id="modal-cancelar"
+                       onclick="cerrar()">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+
+                       <a class="btn btn-success pull-left" 
+                       aria-label="Edit"
+                       ng-click="cam.cambioGrupo()"
+                       onclick="cerrar()"
+                       data-dismiss="modal" title="guardar" id="modal-guardar">
+                       <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+</div>
+
+<script type="text/javascript">
+      function cerrar(){
+        var modal = document.getElementById('cambioGrupo');
+        modal.style.display = "none";
+      }
+      
+    </script>

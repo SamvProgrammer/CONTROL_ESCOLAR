@@ -1,0 +1,126 @@
+<div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{egre.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+  <div>
+    <h2>Lista de Alumnos</h2>
+  </div>
+<div class="table-responsive" >
+<div class="col-md-6">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input ng-model="egre.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar alumno">
+            </div>
+          </div>
+          
+         
+
+          
+        </div>
+
+<div  id="tabla-alumno"><!--table table-striped-->
+      <table class="table table-striped">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>CURP
+          <th>Nombres
+          <th>Apellido Paterno
+          <th>Apellido Materno
+          <th>Grupo
+          <th>Colonia
+          <th>Calle
+          <th>Tipo Sangre
+          <th>Alergias
+          <th>Nombre Tutor 
+          <th>Número Teléfono
+          <th>Correo
+          <th>Acción
+          
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="alumnos in egre.egresados | filter:egre.q | itemsPerPage:egre.pageSize" current-page="egre.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{alumnos.idAlumno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.curp}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombres}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.grupo}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.colonia}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.calle}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.tipoSangre}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.alergias}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombreTutor}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.numTel}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.email}}</span>
+        </td>
+        <td>
+          
+              <a class="btn btn-success"
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="egre.ejecutarFunciones(alumnos.idAlumno)" 
+                  title="Imprimir boleta de calificaciones"
+                  >
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i> Boleta</a>
+
+              
+            
+
+
+
+        </td>
+      </tr>
+    </tbody>
+
+    </table>
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+    
+    
+   </div>
+
+
+
+  </div
+   

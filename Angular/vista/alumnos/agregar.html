@@ -1,0 +1,260 @@
+<div id="containerA">
+     <div class="col-md-4">
+            <flash-message>
+            </flash-message>
+     </div>
+     <div class="row">
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        
+          
+            <label>CURSO:{{pc.ciclo}} </label>
+          
+        
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        
+    </div>
+     <div>
+          <h2><center>Datos de los Alumnos</center></h2>
+     </div>   
+     <div id="informacion" role="alert">
+          <h4>Información general</h4>
+     </div>
+     <!--<div class="alert alert-danger" ng-if="pc.oculta">
+            <li ng-repeat="err in pc.advertencia">
+              <strong>ERROR!</strong> {{err[0]}}
+            </li>
+      </div>-->
+      <div class="row">
+      <div class="col-md-3">
+          <label>Nombres</label>
+          <input type="text" ng-model="pc.objAlumno.nombres" ng-keypress="pc.valida($event,4)" class="form-control"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+          
+      </div>
+      <div class="col-md-3">
+          <label>Apellido Paterno</label>
+          <input type="text" ng-model="pc.objAlumno.apPaterno" ng-keypress="pc.valida($event,4)" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+          
+      </div>
+      <div class="col-md-3">
+          <label>Apellido Materno</label>
+          <input type="text" ng-model="pc.objAlumno.apMaterno" ng-keypress="pc.valida($event,4)" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+
+      </div>
+      <div class="col-md-3">
+          <label>Fecha Nacimiento</label>
+          <input type="text" ng-model="pc.objAlumno.fechaNacimiento"  class="form-control" ng-blur="pc.validaFechaNacimiento($event)" placeholder="dd/mm/aaaa" required>
+          
+      </div>
+
+    </div>
+     
+     <div class="row">
+      <div class="col-md-3">
+           <label>Sexo</label>
+                <select ng-model="pc.objAlumno.sexo" class="form-control" required>
+                <option value="H">Masculino</option>
+                <option value="M">Femenino</option>
+                </select><br>
+          
+      </div>
+
+        <div class="col-md-3">
+        
+           <label>Estado</label><br>
+           <ui-select ng-model="pc.edo.selected" ng-change="pc.obtenCurp()" class="form-control" theme="select2" >
+                  <ui-select-match placeholder="Seleccione Estado" required>{{$select.selected.name}}</ui-select-match>
+                  
+                  <ui-select-choices repeat="ed in pc.arrEstados | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="ed.name | highlight: $select.search"></div>
+                      <small>
+                                            
+                      </small>
+               </ui-select-choices>
+            </ui-select>  
+        </div>
+      <div class="col-md-3">
+          <label>CURP</label>
+          <input type="text" ng-model="pc.objAlumno.curp" class="form-control" ng-blur="pc.getevaluarcurp($event)" onkeyup="javascript:this.value=this.value.toUpperCase();" id="crup" required disabled>
+          
+      </div>
+      
+      <div class="col-md-3">
+            <label>Edad</label>
+            <input type="number"  ng-model="pc.objAlumno.edad" class="form-control" id="edad" min="5" disabled> 
+
+        </div>
+    
+    </div>
+    <div class="row">
+        
+        <div class="col-md-3" ng-if="pc.muestra()">
+        <div class="col-md-6">
+           <label >Grado</label>
+           <select class="form-control" ng-model="pc.objAlumno.grado" ng-change="pc.getGruposByGrado()"  required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+           </select>
+        </div>
+        <div class="col-md-6">
+        
+           <label>Grupo</label><br>
+           <ui-select ng-model="pc.grupo.selected" theme="select2" ng-disabled="disabled" style="min-width: 60px;" >
+                  <ui-select-match placeholder="Seleccione Grupo" required>{{$select.selected.nombre}}</ui-select-match>
+                  
+                  <ui-select-choices repeat="group in pc.datos_grupos">
+                      <div ng-bind-html="group.nombre | highlight: $select.search"></div>
+                      <small>
+                                            
+                      </small>
+               </ui-select-choices>
+            </ui-select>  
+        </div>
+        
+
+      </div>
+        <div class="col-md-3">
+           <label>Alergias</label>
+           <input type="text" ng-model="pc.objAlumno.alergias"  class="form-control" ng-keypress="pc.valida($event,4)" onkeyup="javascript:this.value=this.value.toUpperCase();" required><br>
+      </div>
+      <div class="col-md-3">
+           <label>Nombre Tutor</label>
+           <input type="text" ng-model="pc.objAlumno.nombreTutor" ng-keypress="pc.valida($event,4)" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" placeholder="nombres,apellidoP,apellidoM" required><br>
+      </div> 
+        
+      <div class="col-md-3">
+           <label>Número de Teléfono del Tutor</label>
+           <input type="text" ng-model="pc.objAlumno.numTel" maxlength="10" ng-keypress="pc.valida($event,2)" class="form-control" required><br>
+      </div>
+
+      
+      </div>
+      <div class="row">
+      <div class="col-md-3">
+           <label>Escuela de procedencia</label>
+           <input type="text" ng-model="pc.objAlumno.procedencia" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" required><br>
+      </div>
+      
+      <div class="col-md-3">
+          <label>Codigo Postal</label>
+          <input name="cp" type="text" ng-keypress="pc.valida($event,2)" ng-model="pc.objAlumno.codigo_postal" class="form-control"  ng-blur="pc.comprobarObtenInfoCodigoPostal(pc.objAlumno.codigo_postal)" maxlength="5" minlength="5" required><br>
+      </div>
+      <div class="col-md-3">
+          <label>Colonia</label>
+          <select  ng-model="pc.objAlumno.colonia" class="form-control" required >
+            <option ng-repeat= "col in pc.datos_codigoPostal.colonias">{{col}}</option>
+          </select>
+          <!--<input type="text" ng-model="pc.objAlumno.colonia" class="form-control" ng-keypress="pc.valida($event,1)"  onkeyup="javascript:this.value=this.value.toUpperCase();" required>--><br>
+      </div>
+      <div class="col-md-3">
+           <label>Calle</label>
+           <input type="text" ng-model="pc.objAlumno.calle" class="form-control" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();" required><br>
+      </div>
+      <div class="col-md-3">
+           <label>Tipo Sangre</label>
+                <select ng-model="pc.objAlumno.tipoSangre" class="form-control" required>
+                <option>ORH+</option>
+                <option>ORH-</option>
+                <option>ARH+</option>
+                <option>ARH-</option>
+                <option>BRH+</option>
+                <option>BRH-</option>
+                <option>ABRH+</option>
+                <option>ABRH-</option>
+                </select><br>
+          
+      </div>
+
+    </div>
+ 
+       
+    
+
+    <div id="informacion" role="alert" >
+          <h4>Información de cuenta</h4>
+     </div>
+    <div class="row">
+  
+  <div class="col-md-3"></div>
+  <div class="col-md-3">
+      <label>Correo del Tutor</label>
+  </div>
+  <div class="col-md-3">
+      <label>Contraseña</label>
+  </div>
+  <div class="col-md-3"></div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-3">
+    
+      <input type="text" ng-model="pc.objAlumno.email" class="form-control" ng-blur="pc.getevaluaremail($event)" required>
+  </div>
+  <div class="col-md-3">
+      <div class="input-group">
+        
+        <input id="password" type="password" ng-model="pc.objAlumno.password" class="form-control" placeholder="Contraseña para ingresar al sistema" required>
+        
+        <span class="input-group-btn">
+          <button id="show-pass" class="btn btn-default" title="Mostrar Contraseña"><i class="fa fa-eye" aria-hidden="true"></i>Ver</button>
+        </span>
+
+      </div>
+      <span id="mensaje"></span>
+  </div>
+  <div class="col-md-3"></div>
+
+</div>
+<!--detecta cambio-->
+
+      <br>
+      <center><button ng-click="pc.agregarAlumno(pc.objAlumno)" id="Agregar" class="btn btn-info">Agregar</button> 
+      <button ng-click="pc.limpiainputs()" id="Cancelar" class="btn btn-info">Cancelar</button></center>
+</div>
+
+  
+
+<script type="text/javascript">
+  
+  $(document).ready(function () {
+   $('#show-pass').click(function () {
+    if ($('#password').attr('type') === 'text') {
+     $('#password').attr('type', 'password');
+    } else {
+     $('#password').attr('type', 'text');
+    }
+   });
+  });
+
+
+  $(function(){
+  var mayus=new RegExp("^(?=.*[A-Z])");
+  var special=new RegExp("^(?=.*[!@#$&*+.-_,])");
+  var numbers=new RegExp("^(?=.*[0-9])");
+  var lower=new RegExp("^(?=.*[a-z])");
+  var len=new RegExp("^(?=.{8,})");   
+
+  $("#password").on("keyup",function(){
+    var pass=$("#password").val();
+    if(mayus.test(pass)&& special.test(pass) && numbers.test(pass) && lower.test(pass)&&len.test(pass)){
+      $("#mensaje").text("Segura").css("color","green");
+    }else{
+      $("#mensaje").text("Insegura").css("color","red");
+    }
+  });
+});
+
+
+
+</script>
+           
+           

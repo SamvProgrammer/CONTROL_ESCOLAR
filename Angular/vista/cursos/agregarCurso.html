@@ -1,0 +1,38 @@
+<div id="containerA">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{cc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+  <div>
+    <h2>Nuevo Curso</h2>
+  </div>
+  <div id="informacion" role="alert">
+      <h4>Información general</h4>
+  </div><br>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <label>Inicio del curso:</label><br>
+        <input id="fechaInicial" type="date" name="Inicioperiodo" ng-model="cc.objCurso.anioInicio"   min="2018-08-21"  max="2018-08-31" ng-blur="cc.cursoCorrecto1(cc.objCurso.anioInicio)" placeholder="21/08/2018" required><br> 
+    
+        <label>Fin del curso:</label><br>
+        <input id="fechaFinal" type="date" name="Terminoperiodo" ng-model="cc.objCurso.anioFin"
+          min="2019-07-09"  ng-blur="cc.cursoCorrecto2(cc.objCurso.anioFin)"  placeholder = "16/07/2019" required>
+    </div>
+    <div class="col-md-4"></div>
+  </div><br>
+
+  <center>
+    <button ng-click="cc.agregarCurso(cc.objCurso)" id="Agregar" class="btn btn-info">Agregar</button>
+    <button ng-click="cc.limpiainputs()" id="Cancelar" class="btn btn-info">Cancelar</button>
+   
+  </center>
+  
+</div>

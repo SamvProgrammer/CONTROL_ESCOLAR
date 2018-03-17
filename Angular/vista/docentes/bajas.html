@@ -1,0 +1,96 @@
+<div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{bja.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+    <div>
+      <h2>Lista de Baja de Docentes</h2>
+    </div>
+    <div class="table-responsive" >
+          <div class="col-md-6">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input ng-model="bja.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar docente">
+            </div>
+          </div>
+          </div>
+          <div  id="tabla-docente"><!--table table-striped-->
+      <table class="table table-striped">
+      <thead>
+        <tr>
+        
+          <th width="15%">Id
+          <th width="15%">RFC
+          <th width="15%">Nombres
+          <th width="15%">Apellido Paterno
+          <th width="15%">Apellido Materno
+          <th width="15%">Motivo de Baja
+          <th width="15%">Tipo(2 Docente)
+          <th width="15%">Numero Teléfono
+          <th width="15%">Correo
+          <th width="15%">Colonia
+          <th width="15%">Calle
+          <th width="15%">TipoSangre
+          <th width="15%">Alergias
+          
+        </tr>
+      </thead>
+       <!--<tbody ng-repeat="docentes in bja.datos_docentes">-->
+         <tbody dir-paginate="docentes in bja.bajaDocentes | filter:bja.q | itemsPerPage:bja.pageSize" current-page="bja.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{docentes.idDocente}}</span>
+        </td>
+        <td>
+          <span>{{docentes.rfc}}</span>
+        </td>
+        <td>
+          <span>{{docentes.nombres}}</span>
+        </td>
+         <td>
+          <span>{{docentes.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{docentes.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{docentes.motivodebaja}}</span>
+        </td>
+        <td>
+          <span>{{docentes.tipo}}</span>
+      
+        <td>
+          <span>{{docentes.numTel}}</span>
+        </td>
+        <td>
+          <span>{{docentes.email}}</span>
+        </td>
+        <td>
+          <span>{{docentes.colonia}}</span>
+        </td>
+        <td>
+          <span>{{docentes.calle}}</span>
+        </td>
+        <td>
+          <span>{{docentes.tipoSangre}}</span>
+        </td>
+        <td>
+          <span>{{docentes.alergias}}</span>
+        </td>
+        
+      </tr>
+    </tbody>
+    </table>
+    
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+</div>
+</div>

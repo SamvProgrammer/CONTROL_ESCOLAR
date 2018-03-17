@@ -1,0 +1,111 @@
+
+
+#btn-eliminarA{
+	font-size: 14px;
+	height: 40px;
+	width: 110px;
+	color: white;
+	border-color: transparent;
+	
+}
+#btn-modificar{
+	height: 40px;
+	width: 110px;
+	color: white;
+	font-size: 14px;
+	background-color: #28891f;
+	border-color: transparent;
+}
+table{
+	table-layout: auto;
+}
+th{
+	text-align: center;
+	font-size: 14px;
+
+}
+td{
+	text-align: center;
+	font-size: 14px;
+
+}
+
+
+#listalumno{
+	/*color: #1f618d;*/
+	color:#28891f;
+	
+}
+#table-alumno{
+	font-size: 14px;
+	border-spacing: 2px;
+	border-collapse: separate;
+	text-align: center;
+}
+
+h2{
+	/*color: rgb(13,2,58);*/
+	color:#28891f;
+	font-weight: bold;
+}
+#informacion{
+	 /*background-color:rgba(187, 0,9,1);*/
+	 background:rgba(0,100,0,.9);
+	 /*background-color:#22741a;*/
+	 border-top-left-radius: 20px;
+  	 border-bottom-right-radius: 20px;
+
+}
+h4{
+	padding: 0.5em;
+}
+
+#labeltamaño{
+  display: block;
+  width: 200px;
+  margin: .5em 0 0 0;
+ 
+}
+#inputtamaño{
+    /*display: inline-block;
+	margin: 0.5em auto;*/
+	float: left;
+	width: 200px;
+    margin-bottom: 10px;
+}
+#Agregar{
+
+	/*background-color:rgba(187, 0,9,1);*/
+	background-color:#28891f;
+	height: 40px;
+	width: 90px;
+	border-color:transparent;
+
+}
+#Cancelar{
+	height: 40px;
+	width: 90px;
+	background-color: rgb(13,2,58);
+	border-color: transparent;
+}
+#Finalizar{
+	height: 40px;
+	width: 200px;
+	background-color:#28891f;
+	border-color: transparent;
+	color: white;
+}
+#Estadistica{
+	height: 40px;
+	width: 120px;
+	background-color:#28891f;
+	border-color: transparent;
+	color: white;
+	text-align: left;
+}
+#selecttam{
+	width: 45px;
+}
+#negro{
+	color: black;
+}

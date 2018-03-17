@@ -1,0 +1,162 @@
+<div id="containerAb">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{mc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+  <div>
+    <h2>Lista de Materias</h2>
+  </div>
+<div class="table-responsive" >
+  <div class="col-md-6">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input ng-model="mc.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar Materia">
+            </div>
+          </div>
+        </div>
+<div id="tablaGral">
+      <table class="table table-striped">
+      <thead>
+        <tr> 
+          <th width="10%">Id
+          <th width="10%">Nombre
+          <th width="10%">Grado
+          <th width="10%">Horas Semanales
+        </tr>
+      </thead>
+       <tbody dir-paginate="materias in mc.datos_materias | filter:mc.q | itemsPerPage:mc.pageSize" current-page="mc.currentPage" pagination-id="alumnoPagination">
+
+     <!-- <tbody ng-repeat="materias in mc.datos_materias">-->
+      <tr class="form-inline">
+        <td>
+          <span>{{materias.idMateria}}</span>
+        </td>
+        <td>
+          <span>{{materias.nombre}}</span>
+        </td>
+        <td>
+          <span>{{materias.grado}}</span>
+        </td>
+        <td>
+          <span>{{materias.horas}}</span>
+        </td>
+        <td>
+          
+
+          <a class="btn btn-success" 
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="mc.getMateriaByTagName(materias.idMateria)" title="Modifica los datos de la materia correspondiente a esta fila">
+               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>Modificar</a>
+
+          <a class="btn btn-danger" id="btn-eliminarA" 
+                  ng-click="mc.deleteMateria(materias.idMateria)" 
+                  title="Elimina los datos de la materia correspondiente a esta fila">
+               <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>Inactivar</a>
+
+        </td>
+         
+      </tr>
+    </tbody>
+    </table>
+     <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+    
+   </div>
+
+
+ <!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>NOMBRE: {{mc.objMateria.nombre}}</strong>
+          </div>
+                    <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">
+                          <th width="20%">DATOS
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>NOMBRE</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-keypress="mc.valida($event,4)" ng-model="mc.objMateria.nombre" value="{{mc.objMateria.nombre}}" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>GRADO</strong></span>
+                          </td>
+                          <td>
+                            
+                            <select id="selecttam" ng-model="mc.objMateria.grado" ng-blur="mc.materiaExistente()">
+                              <option selected="true">{{mc.objMateria.grado}}</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>HORAS</strong></span>
+                          </td>
+                          <td>
+                            <select id="selecttam" ng-model="mc.objMateria.horas">
+                              <option selected="true">{{mc.objMateria.horas}}</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>8</option>
+                            </select>
+                          </td>
+                        </tr>
+                       
+                        </tr>
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-md-12 top-buffer" >
+                      <a class="btn btn-danger pull-right"  
+
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+
+                       <a class="btn btn-success pull-left" 
+                       aria-label="Edit"
+                       ng-click="mc.updateMateria(mc.objMateria)"
+                       data-dismiss="modal" title="guardar" id="modal-guardar">
+                       <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+
+
+
+	
+	<label>Grado Materia</label>
+  <input type="text" placeholder="Grado materia" ng-model="grado">
+      <button ng-click="pc.getMateriaByGrado(grado)" onclick="ocultarnombre1()" ;>Buscar</button>
+        
+
+
+
+<br>
+<br>
+<br>
+<div id="nombress" style="visibility: hidden">
+      <table class="table table-striped">
+      <thead>
+        <tr> 
+          <th width="10%">Id
+          <th width="10%">Nombre
+          <th width="10%">Grado
+          
+        </tr>
+      </thead>
+      <tbody ng-repeat="materia in pc.gradoMateria">
+      <!--<tbody >-->
+      <tr class="form-inline">
+        <td>
+          <span>{{materia.idMateria}}</span>
+        </td>
+        <td>
+          <span>{{materia.nombre}}</span>
+        </td>
+        <td>
+          <span>{{materia.grado}}</span>
+        </td>
+         
+          
+      </tr>
+    </tbody>
+    </table>
+    
+   </div>
+
+<script >
+  
+
+
+  var ocultarnombre1= function(){
+    document.getElementById("nombress").style.visibility='visible';
+  };
+</script>
+

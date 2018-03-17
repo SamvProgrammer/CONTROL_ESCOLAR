@@ -1,0 +1,87 @@
+ <div id="containerA">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{ctrl.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+ <form action="" id="myForm" name="myForm">
+  <div>
+    <h2>Capturar calificaciones</h2>
+    <label id="negro">Para capturar calificaciones primero elige el bimestre, si estas dentro de las fechas permitidas podras ingresar valores a los campos, de lo contrario se muestran desactivados cuando termines da en el botón de guardar y si deseas imprimir tu lista bimestral presiona en el boton de PDF</label>
+  </div>
+  
+
+    <div class="row">
+      <div class="col-md-3">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Bimestre</span>
+
+           <select class="form-control" ng-model="ctrl.bim" ng-change="ctrl.obtenerEvaluaciones()">
+                <option ng-repeat="bimes in ctrl.bimestres" value="{{bimes.idBimestre}}">{{bimes.nombre}}</option>
+           </select>
+
+            </div>
+          </div>
+    </div><br>
+    </div>
+<div class="table-responsive" >
+      <div id="tabla-alumno"><!--table table-striped-->
+
+      <table class="table table-striped">
+      <thead>
+        <th>NOMBRE DEL ALUMNO</th>
+          <th ng-repeat="(i, materias) in ctrl.evaluaciones[0].datosMateria.nombreMateria track by $index">
+          {{materias}}</th>
+        
+        </tr>
+      </thead>
+      <!--
+      model="CtrlGrupoAlumno.registro[i].bimestre1
+      -->
+       <tbody>
+        <tr class="form-inline" ng-repeat="(j, alumnos) in ctrl.evaluaciones">
+        <td>{{alumnos.nombre_completo}}</td>
+        <td ng-repeat="(i, materias) in alumnos.datosMateria.califMateria track by $index">
+        <input class="form-control" type="text" style="width: 6em" ng-model="ctrl.evaluaciones[j].datosMateria.califMateria[i]" ng-blur="ctrl.pruebaValida(ctrl.evaluaciones[j].datosMateria.califMateria[i],j,i)" ng-disabled="!ctrl.valiFechasEval(ctrl.bim)" maxlength="3">
+        </td>
+        
+        </tr>
+       </tbody>
+       </table>
+   </div>
+ </div>
+
+   <button class="btn btn-success" 
+                ng-click="ctrl.updateEvaluacionesAlumno()" title="Guardar">
+                <i class="fa fa-floppy-o fa-2x" aria-hidden="true">Guardar</i>
+            </button>
+
+            <a class="btn btn-warning" 
+                ng-click="ctrl.preparaPDF()" title="Generar pdf">
+                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true">Imprimir</i>
+            </a>
+</div>
+
+    
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+ 

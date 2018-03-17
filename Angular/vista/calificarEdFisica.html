@@ -1,0 +1,91 @@
+ <div id="containerA">
+  <div class="row">
+            <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <br>
+        <label>CURSO:{{edf.ciclo}}</label>
+
+        </div>
+        <div class="col-md-4"></div>
+        
+        
+    </div>
+ <form action="" id="myForm" name="myForm">
+  <div>
+    <h2>Capturar calificaciones</h2>
+    <label id="negro">Para capturar calificaciones primero elige el grado y grupo, posteriormente el bimestre e ingresa las calificaciones correspondientes a cada alumno</label>
+  </div>
+
+  <div class="col-md-3">
+    <select class="form-control" ng-model="edf.grupo" ng-change="edf.traerAlumnosGrupo()"  placeholder="elige el grupo">
+        <option ng-repeat="grupos in edf.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+      </select>
+  </div>
+  
+    <div class="col-md-3">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Bimestre</span>
+
+           <select class="form-control" ng-model="edf.bim" ng-change="edf.obtenerEvaluaciones()">
+                <option ng-repeat="bimes in edf.bimestres" value="{{bimes.idBimestre}}">{{bimes.nombre}}</option>
+           </select>
+
+            </div>
+          </div>
+    </div>
+
+      <div id="tablaGral"><!--table table-striped-->
+
+      <table class="table table-striped">
+      <thead>
+        <th>NOMBRE DEL ALUMNO</th>
+          <th ng-repeat="(i, materias) in edf.evaluaciones[0].datosMateria.nombreMateria track by $index">
+          {{materias}}</th>
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr class="form-inline" ng-repeat="(j, alumnos) in edf.evaluaciones">
+        <td>{{alumnos.nombre_completo}}</td>
+        <td ng-repeat="(i, materias) in alumnos.datosMateria.califMateria track by $index">
+        <input class="form-control" type="text" style="width: 6em" ng-model="edf.evaluaciones[j].datosMateria.califMateria[i]" ng-blur="edf.pruebaValida(edf.evaluaciones[j].datosMateria.califMateria[i],j,i)" ng-disabled="!edf.valiFechasEval(edf.bim)"  maxlength="3">
+        </td>
+        
+        </tr>
+       </tbody>
+       </table>
+   </div>
+
+   <button class="btn btn-success" 
+                ng-click="edf.updateEvaluacionesAlumno()" title="Guardar">
+                <i class="fa fa-floppy-o fa-2x" aria-hidden="true">Guardar</i>
+            </button>
+
+            <a class="btn btn-warning" 
+                ng-click="edf.preparaPDF()" title="Generar pdf">
+                <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true">Imprimir</i>
+            </a>
+
+            
+
+            
+</div>
+
+    
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,91 @@
+ <div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{re.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+ <form action="" id="myForm" name="myForm">
+  <div>
+    <h2>Capturar calificaciones</h2>
+    
+  </div>
+
+  <div class="col-md-4">
+    <label>Seleccione el grado y grupo</label>
+    <select class="form-control" ng-model="re.grupo" ng-change="re.traerAlumnosGrupo()"  placeholder="elige el grupo">
+        <option ng-repeat="grupos in re.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+      </select>
+  </div>
+  <div class="col-md-4">
+    <label>Seleccione al alumno</label>
+    <select class="form-control" ng-model="re.alumno" placeholder="elige el alumno">
+        <option ng-repeat="alu in re.alumnos" value="{{alu.idAlumno}}">{{alu.apPaterno+" "+ alu.apMaterno+" "+ alu.nombres}}</option>
+      </select>
+  </div>
+  
+
+    <div class="col-md-4">
+      <label>Seleccione el bimestre</label>
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon">Bimestre</span>
+
+           <select class="form-control" ng-model="re.bim" ng-change="re.obtenerEvaluaciones()">
+                <option ng-repeat="bimes in re.bimestres" value="{{bimes.idBimestre}}">{{bimes.nombre}}</option>
+           </select>
+
+            </div>
+          </div>
+    </div>
+
+      <div id="tablaGral"><!--table table-striped-->
+
+      <table class="table table-striped">
+      <thead>
+        <th>NOMBRE DEL ALUMNO</th>
+          <th ng-repeat="(i, materias) in re.evaluaciones[0].datosMateria.nombreMateria track by $index">
+          {{materias}}</th>
+        
+        </tr>
+      </thead>
+       <tbody>
+        <tr class="form-inline" ng-repeat="(j, alumnos) in re.evaluaciones">
+        <td>{{alumnos.nombre_completo}}</td>
+        <td ng-repeat="(i, materias) in alumnos.datosMateria.califMateria track by $index">
+        <input class="form-control" type="text" style="width: 6em" ng-model="re.evaluaciones[j].datosMateria.califMateria[i]" ng-blur="re.pruebaValida(re.evaluaciones[j].datosMateria.califMateria[i],j,i)"  maxlength="3">
+        </td>
+        
+        </tr>
+       </tbody>
+       </table>
+   </div>
+
+   <button class="btn btn-success" id="Agregar" style="text-align: left" 
+                ng-click="re.updateEvaluacionesAlumno()" title="Guardar">
+                <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+            </button>
+
+            
+</div>
+
+    
+
+
+
+    
+   
+
+
+
+
+
+
+
+
+ 

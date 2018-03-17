@@ -1,0 +1,16 @@
+
+/*nav.navbar {
+    background-color:rgba(187, 0,9,1);
+    color: white;
+    border:hidden;
+}
+*/
+
+nav.navbar {
+    /*background-color:#006f22;*/
+    background:rgba(0,100,0,.9);
+    color: white;
+    border:hidden;
+    font-size: 14px;
+}
+

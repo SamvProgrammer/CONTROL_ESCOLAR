@@ -1,0 +1,264 @@
+<div id="containerA">
+  <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{pc.ciclo}}</label>
+        </div>
+        
+        <div class="col-md-4"></div>
+        
+    </div>
+    <div>
+      <h2>Lista de Docentes asignados a grupo</h2>
+    </div>
+    <div class="table-responsive" >
+          <div class="col-md-6">
+          <div class=" form-group">
+            <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+            <input ng-model="pc.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar docente">
+            </div>
+          </div>
+          </div>
+          <div  id="tabla-docente"><!--table table-striped-->
+      <table class="table table-striped">
+      <thead>
+        <tr>
+        
+          <th width="15%">Id
+          <th width="15%">RFC
+          <th width="15%">Nombres
+          <th width="15%">Apellido Paterno
+          <th width="15%">Apellido Materno
+          <th width="15%">Grupo
+          <th width="15%">Tipo(2 Docente)
+          <th width="15%">Número Teléfono
+          <th width="15%">Correo
+          <th width="15%">Colonia
+          <th width="15%">Calle
+          <th width="15%">TipoSangre
+          <th width="15%">Alergias
+          <th width="25%">Acción
+          
+        </tr>
+      </thead>
+       <!--<tbody ng-repeat="docentes in pc.datos_docentes">-->
+         <tbody dir-paginate="docentes in pc.datos_docentes | filter:pc.q | itemsPerPage:pc.pageSize" current-page="pc.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{docentes.idDocente}}</span>
+        </td>
+        <td>
+          <span>{{docentes.rfc}}</span>
+        </td>
+        <td>
+          <span>{{docentes.nombres}}</span>
+        </td>
+         <td>
+          <span>{{docentes.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{docentes.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{docentes.grupo}}</span>
+        </td>
+        <td>
+          <span>{{docentes.tipo}}</span>
+      
+        <td>
+          <span>{{docentes.numTel}}</span>
+        </td>
+        <td>
+          <span>{{docentes.email}}</span>
+        </td>
+        <td>
+          <span>{{docentes.colonia}}</span>
+        </td>
+        <td>
+          <span>{{docentes.calle}}</span>
+        </td>
+        <td>
+          <span>{{docentes.tipoSangre}}</span>
+        </td>
+        <td>
+          <span>{{docentes.alergias}}</span>
+        </td>
+        <td>
+       
+          <a class="btn btn-success"  
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="pc.getDocenteByTagName(docentes.idDocente)"
+                  title="Modifica los datos del docente correspondiente a esta fila">
+              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ></i>Modificar </a>
+
+              <!--<a class="btn btn-danger" id="btn-eliminarA" 
+                  ng-click="pc.eliminarDocente(docentes.idDocente)"
+                  title="Elimina el docente correspondiente a esta fila">
+               <i class="fa fa-user-times fa-2x" aria-hidden="true" ></i>Inactivar</a>-->     
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+</div>
+
+    <!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>NOMBRE: {{pc.upDocente.nombres}}</strong>
+          </div>
+                    <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th width="15%">
+                          <th width="20%">DATOS
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>RFC</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.rfc" value="{{pc.upDocente.rfc}}" ng-blur="pc.getrfcDocenteactualizar($event)" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>NOMBRE</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.nombres" value="{{pc.upDocente.nombres}}" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>APELLIDO PATERNO</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.apPaterno" value="{{pc.upDocente.apPaterno}}" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>APELLIDO MATERNO</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.apMaterno" value="{{pc.upDocente.apMaterno}}" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
+                          </td>
+                        </tr>
+                         
+<!--agregue tipo-->
+                          <tr class="form-inline">
+                          <td>
+                            <span><strong>TIPO</strong></span>
+                          </td>
+                          <td>
+                           
+                               <input type="text" class="form-control" ng-model="pc.upDocente.tipo"  value="{{pc.upDocente.tipo}}" disabled>
+                          
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>NUMERO TELEFONO</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.numTel" value="{{pc.upDocente.numTel}}" ng-keypress="pc.valida($event,2)" maxlength="10" >
+                          </td>
+                        </tr>
+                          <tr class="form-inline">
+                          <td>
+                            <span><strong>CORREO</strong></span>
+                          </td>
+                          <td>
+                            <input type="email" class="form-control" ng-model="pc.upDocente.email" value="{{pc.upDocente.email}}" ng-blur="pc.getemailDocenteactualizar($event)">
+                          </td>
+                        </tr>
+
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>COLONIA</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.colonia" value="{{pc.upDocente.colonia}}" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>CALLE</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.calle" value="{{pc.upDocente.calle}}" ng-keypress="pc.valida($event,1)" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          </td>
+                        </tr>
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>TIPO SANGRE</strong></span>
+                          </td>
+                          <td>
+                            
+                               <select ng-model="pc.upDocente.tipoSangre">
+                               <option>{{pc.upDocente.tipoSangre}}</option>
+                               <option>ORH+</option>
+                               <option>ORH-</option>
+                               <option>ARH+</option>
+                               <option>ARH-</option>
+                               <option>BRH+</option>
+                               <option>BRH-</option>
+                               <option>ABRH+</option>
+                               <option>ABRH-</option>
+                               </select>
+
+                            <!--<input type="text" class="form-control" ng-model="pc.upDocente.tipoSangre" value="{{pc.upDocente.tipoSangre}}">
+                          </td>
+                        </tr>-->
+                        <tr class="form-inline">
+                          <td>
+                            <span><strong>ALERGIAS</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" ng-model="pc.upDocente.alergias" value="{{pc.upDocente.alergias}}" ng-keypress="pc.valida($event,4)" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>                  
+                </div>
+                <div class="col-md-12 top-buffer" >
+                      <a class="btn btn-danger pull-right"  
+
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+
+                       <a class="btn btn-success pull-left" 
+                       aria-label="Edit"
+                       ng-click="pc.updateDocente(pc.upDocente)"
+                       data-dismiss="modal" title="guardar" id="modal-guardar">
+                       <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+
+#tablaGral{
+	font-size: 14px;
+	border-spacing: 2px;
+	border-collapse: separate;
+	text-align: center;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+#tablaGrado{
+	position: absolute;
+	width: 900px;
+	margin-left: 150px;
+	margin-top: 150px;
+}
+
+#input{
+	position: absolute;
+	margin-left: 350px;
+	margin-top: 50px;
+}
+
+#lista-nav{
+	position: absolute;
+	margin-left: 200px;
+	margin-top: 60px;
+}
+
+#containerB{
+	background-color: white;
+	height: 100%;
+	width: 100%;
+}
+#listamaterias{
+	color: #1f618d;
+}
+th{
+	text-align: center;
+}

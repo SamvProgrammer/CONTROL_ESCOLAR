@@ -1,0 +1,169 @@
+<div id="containerA">
+   <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO:{{cam.ciclo}}</label>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        
+    </div>
+
+<div>
+    <h2>Cambiar Alumnos de Grupo</h2>
+    <label ng-if="pc.isDirector">Elija primero el grupo del que se quiere obtener los alumnos, y partiendo de ahi puede realizar la búsqueda normalmente.</label>
+  </div>
+  <div class="table-responsive">
+  <div class="col-xs-6">
+          <label>Grupos</label>
+      <select class="form-control" ng-model="cam.grupo_seleccionado" placeholder="elige el grupo" ng-change="cam.getAlumnosByGrupo(cam.grupo_seleccionado)">
+        <option ng-repeat="grupos in cam.datos_grupo"  value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+      </select>
+      <br>
+      
+    </div>
+<div class="col-md-6">
+  <label>Búsqueda</label>
+          <div class=" form-group">
+            <div class="input-group">
+
+            <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+
+            <input ng-model="cam.q" ng-hide="vg.checked" class="form-control" placeholder="Buscar alumno">
+            </div>
+          </div>
+        </div>
+        
+<br>
+
+      <table class="table">
+      <thead>
+        
+        <tr> 
+          <th>Id
+          <th>CURP
+          <th>Nombres
+          <th>Apellido Paterno
+          <th>Apellido Materno
+          <th>Colonia
+          <th>Calle
+          <th>Tipo Sangre
+          <th>Alergias
+          <th>Escuela de procedencia
+          <th>Nombre Tutor 
+          <th>Número Teléfono
+          <th>Correo
+          <th>Acción
+          
+        </tr>
+      </thead>
+      <!--
+      <tbody ng-repeat="alumnos in pc.datos_alumnos">
+      -->
+       <tbody dir-paginate="alumnos in cam.alumnos_grupo | filter:cam.q | itemsPerPage:cam.pageSize" current-page="cam.currentPage" pagination-id="alumnoPagination">
+      <tr class="form-inline">
+        <td>
+          <span>{{alumnos.idAlumno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.curp}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombres}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.apPaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.apMaterno}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.colonia}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.calle}}</span>
+        </td>
+         <td>
+          <span>{{alumnos.tipoSangre}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.alergias}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.procedencia}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.nombreTutor}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.numTel}}</span>
+        </td>
+        <td>
+          <span>{{alumnos.email}}</span>
+        </td>
+        <td>
+         
+              <a class="btn btn-success"
+                  arial-label= "Mas.."
+                  data-toggle="modal" 
+                  data-target="#myModalEditar"
+                  ng-click="cam.getAlumnoById(alumnos.idAlumno)"
+                  title="Modifica los datos del alumno correspondiente a esta fila"
+                  ><i class="fa fa-exchange fa-fw" aria-hidden="true" ></i>Cambiar</a>
+        </td>
+      </tr>
+    </tbody>
+
+    </table>
+    <dir-pagination-controls boundary-links="true" pagination-id="alumnoPagination" template-url="vista/dirPagination.tpl.html"></dir-pagination-controls>
+
+    
+    
+   </div>
+ </div>
+
+   <!--***********Modal Editar***********-->
+    <div class="modal" id="myModalEditar">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header" align="center">
+            <!-- more usage of angular data binding -->
+              <strong>NOMBRE: {{cam.objAlumnoUpdate.nombres}} {{cam.objAlumnoUpdate.apPaterno}} {{cam.objAlumnoUpdate.apMaterno}}, GRUPO: {{cam.nombreGrupo.grado}}{{cam.nombreGrupo.nombre}}</strong>
+          </div>
+          <div class="modal-body">
+            <div class="row top-buffer">
+                <div class="col-md-12">
+                  <center>
+                    <strong>Seleccione el nuevo grupo al cual desea aginarlo</strong>
+                      <br>
+                      <br>
+                      <label>Grupos</label>
+                        <select class="form-control" ng-model="cam.grupo_nuevo" placeholder="elige el grupo" >
+                          <option ng-repeat="grupos in cam.grupo_grado"  value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+                        </select>
+                        <br>
+                        <br>
+                        <br>
+                    </center>
+                </div>
+                <div class="col-md-12 top-buffer">
+                      <a class="btn btn-danger pull-right" 
+                       aria-label="Cancel"
+                       data-dismiss="modal" title="cancelar" id="modal-cancelar">
+                      <i class="fa fa-times fa-fw" aria-hidden="true">Cancelar</i>
+                      </a>
+
+                       <a class="btn btn-success pull-left" 
+                       aria-label="Edit"
+                       ng-click="cam.cambiar(cam.grupo_nuevo,cam.objAlumnoUpdate.idAlumno)"
+                       data-dismiss="modal" title="guardar" id="modal-guardar">
+                       <i class="fa fa-floppy-o fa-fw" aria-hidden="true">Guardar</i>
+                      </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

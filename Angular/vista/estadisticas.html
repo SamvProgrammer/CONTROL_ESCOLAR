@@ -1,0 +1,40 @@
+<div id="containerA">
+	
+	<div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="img\logo.jpg" height="50" width="50">
+        <label>ESCUELA PRIMARIA ROSARIO CASTELLANOS</label>
+        <label>CURSO: {{es.ciclo}}</label>
+        </div>
+        
+    </div>
+    <div>
+      <h2>Estadística Inicial</h2>
+    </div>
+    <center>
+    	<strong>Está estadística tiene que generarse al inicio del ciclo</strong>
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<label>Seleccione el grupo</label>
+			<select class="form-control" ng-model="es.grupo_seleccionado"  ng-change="es.cargarAlumnos()" placeholder="elige el grupo">
+				<option ng-repeat="grupos in es.datos_grupo" value="{{grupos.idGrupo}}">{{grupos.grado + " - " + grupos.nombre}}</option>
+			</select>
+			
+			<br>
+			<br>
+			<br>
+
+			<button id="Estadistica" class="btn button-success" 
+                ng-click="es.llenaPDFestadistica()" title="Generar pdf">
+                <i class="fa fa-file-pdf-o fa-fw" aria-hidden="true">Generar PDF</i>
+            </button>
+			
+		</div>
+		
+		<div class="col-xs-4"></div>
+		
+
+	</center>
+
+</div>
